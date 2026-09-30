@@ -4,53 +4,83 @@
 
 @layer base {
   body {
-    @apply bg-tech-bg text-slate-100 font-sans antialiased min-h-screen selection:bg-indigo-600 selection:text-white;
+    @apply bg-ivory text-ink font-sans antialiased min-h-screen;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Accessible keyboard focus states */
+  ::selection {
+    @apply bg-green/20 text-ink;
+  }
+
   :focus-visible {
-    @apply outline-none ring-2 ring-indigo-500 ring-offset-2 ring-offset-tech-bg;
+    @apply outline-none ring-2 ring-green ring-offset-2 ring-offset-ivory;
+  }
+
+  /* Serif display headings */
+  .font-display {
+    font-feature-settings: 'liga' 1, 'kern' 1;
   }
 }
 
-/* Digital Event Ticket Perforated Styling */
+/* Curved section divider */
+.curve-divider {
+  position: relative;
+}
+.curve-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: inherit;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  z-index: 1;
+}
+
+/* Warm scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FCFAF4;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5DFD0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D5CFC0;
+}
+
+/* Ticket styling (preserved for registration success) */
 .ticket-perforated {
   position: relative;
   border-style: dashed;
-  border-color: #334155;
+  border-color: #E5DFD0;
 }
-
 .ticket-notch-left,
 .ticket-notch-right {
   position: absolute;
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #0B0F19;
+  background-color: #FCFAF4;
   top: 50%;
   transform: translateY(-50%);
 }
+.ticket-notch-left { left: -8px; }
+.ticket-notch-right { right: -8px; }
 
-.ticket-notch-left {
-  left: -8px;
+/* Pill button base */
+.btn-pill {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-pill font-semibold text-sm transition-all duration-200;
 }
-
-.ticket-notch-right {
-  right: -8px;
+.btn-green {
+  @apply btn-pill bg-green text-ink hover:bg-green-hover;
 }
-
-/* Restrained scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0B0F19;
-}
-::-webkit-scrollbar-thumb {
-  background: #1E293B;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+.btn-outline {
+  @apply btn-pill bg-transparent text-ink border border-ink/20 hover:border-ink/40;
 }

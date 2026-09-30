@@ -11,7 +11,7 @@ export const AdminLayout: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-tech-bg flex items-center justify-center">
+      <div className="min-h-screen bg-ivory flex items-center justify-center">
         <Loader label="Verifying admin credentials..." size="lg" />
       </div>
     );
@@ -22,18 +22,18 @@ export const AdminLayout: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-tech-bg text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-ivory text-ink flex flex-col">
       {/* Mobile Top Header */}
-      <header className="lg:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-3 bg-tech-bg/90 border-b border-slate-800 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <header className="lg:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-3 bg-ivory/90 border-b border-border backdrop-blur-md">
+        <div className="flex items-center gap-3">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 cursor-pointer"
+            className="p-2 rounded-xl bg-cream border border-border text-ink cursor-pointer"
           >
             <Menu className="w-5 h-5" />
           </button>
-          <span className="text-sm font-semibold text-white flex items-center gap-1.5">
-            <span>Staff Console</span>
+          <span className="text-sm font-semibold text-ink flex items-center gap-1.5 font-display tracking-wide">
+            Staff Console
           </span>
         </div>
       </header>

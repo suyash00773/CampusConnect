@@ -6,7 +6,6 @@ import {
   ClipboardList,
   Users,
   LogOut,
-  GraduationCap,
   ExternalLink,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.js';
@@ -38,31 +37,31 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen = false, onCl
       {isOpen && (
         <div
           onClick={onClose}
-          className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-ink/40 backdrop-blur-sm lg:hidden"
         />
       )}
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-tech-bg border-r border-slate-800 flex flex-col justify-between transition-transform duration-200 lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-cream border-r border-border flex flex-col justify-between transition-transform duration-200 lg:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div>
           {/* Header Branding */}
-          <div className="p-4 border-b border-slate-800/80 flex items-center justify-between">
-            <Link to="/admin" className="flex items-center gap-2.5">
+          <div className="p-5 border-b border-border flex items-center justify-between bg-cream">
+            <Link to="/admin" className="flex items-center gap-3">
               <img
                 src="/abes-logo.png"
                 alt="ABES Engineering College"
-                className="h-9 w-auto object-contain"
+                className="h-10 w-auto object-contain"
               />
-              <div className="h-6 w-px bg-slate-800" />
+              <div className="h-8 w-px bg-border" />
               <div>
-                <div className="font-bold text-xs text-white tracking-tight leading-tight">
-                  Campus<span className="text-indigo-400">Connect</span>
+                <div className="font-bold text-sm text-ink tracking-tight leading-tight font-display">
+                  Campus<span className="text-green">Connect</span>
                 </div>
-                <div className="text-[9px] text-slate-400 font-semibold tracking-wider uppercase">
+                <div className="text-[10px] text-ink-light font-bold tracking-widest uppercase mt-0.5">
                   Staff Console
                 </div>
               </div>
@@ -70,8 +69,8 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen = false, onCl
           </div>
 
           {/* Navigation Links */}
-          <div className="p-3 space-y-1">
-            <div className="px-3 py-1.5 text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
+          <div className="p-4 space-y-1.5">
+            <div className="px-3 py-2 text-xs font-bold text-ink-light uppercase tracking-widest mb-1">
               Management
             </div>
 
@@ -84,14 +83,14 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen = false, onCl
                   end={item.end}
                   onClick={() => onClose && onClose()}
                   className={({ isActive }) =>
-                    `flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                    `flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-colors ${
                       isActive
-                        ? 'bg-indigo-600/15 text-indigo-300 border border-indigo-500/25'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-800/50 border border-transparent'
+                        ? 'bg-green-light text-ink font-semibold border-l-4 border-green'
+                        : 'text-ink-light hover:text-ink hover:bg-sand border-l-4 border-transparent'
                     }`
                   }
                 >
-                  <Icon className="w-4 h-4 shrink-0" />
+                  <Icon className="w-5 h-5 shrink-0" />
                   <span>{item.label}</span>
                 </NavLink>
               );
@@ -99,30 +98,30 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen = false, onCl
           </div>
 
           {/* Quick link to public site */}
-          <div className="px-3 pt-2">
+          <div className="px-4 pt-4 border-t border-border mx-4">
             <Link
               to="/"
               target="_blank"
-              className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-white bg-slate-900/60 hover:bg-slate-900 border border-slate-800 transition-colors"
+              className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-ink hover:bg-sand border border-border transition-colors bg-white"
             >
-              <span>View Public Portal</span>
-              <ExternalLink className="w-3 h-3 text-slate-500" />
+              <span>Public Portal</span>
+              <ExternalLink className="w-4 h-4 text-ink-light" />
             </Link>
           </div>
         </div>
 
         {/* User Card & Logout */}
-        <div className="p-3 border-t border-slate-800/80 bg-tech-surface/40">
+        <div className="p-4 border-t border-border bg-white mt-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5 overflow-hidden">
-              <div className="w-8 h-8 rounded-lg bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-xs font-semibold text-indigo-300 shrink-0">
+            <div className="flex items-center gap-3 overflow-hidden">
+              <div className="w-10 h-10 rounded-full bg-cream border border-border flex items-center justify-center text-sm font-bold text-ink shrink-0">
                 {admin?.username?.charAt(0).toUpperCase() || 'A'}
               </div>
               <div className="truncate">
-                <div className="text-xs font-medium text-white truncate">
+                <div className="text-sm font-bold text-ink truncate">
                   {admin?.name || admin?.username || 'Administrator'}
                 </div>
-                <div className="text-[10px] text-indigo-400 uppercase tracking-wider font-semibold">
+                <div className="text-xs text-ink-light uppercase tracking-wider font-semibold">
                   {admin?.role || 'Admin'}
                 </div>
               </div>
@@ -131,7 +130,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen = false, onCl
             <button
               onClick={handleLogout}
               title="Logout"
-              className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-900 transition-colors cursor-pointer"
+              className="p-2 rounded-full text-ink-light hover:text-ink hover:bg-sand border border-border transition-colors cursor-pointer bg-cream"
             >
               <LogOut className="w-4 h-4" />
             </button>

@@ -27,7 +27,7 @@ import { NotFoundPage } from './pages/NotFoundPage.js';
 // Public Layout with Navbar & Footer
 const PublicLayout: React.FC = () => {
   return (
-    <div className="min-h-screen bg-tech-bg flex flex-col justify-between">
+    <div className="min-h-screen bg-ivory flex flex-col justify-between">
       <div>
         <Navbar />
         <main>

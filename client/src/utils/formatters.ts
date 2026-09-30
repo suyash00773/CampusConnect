@@ -50,44 +50,44 @@ export const getCategoryStyles = (category: string) => {
     case 'Hackathon':
       return {
         bg: 'bg-indigo-950/70 text-indigo-300 border-indigo-700/60',
-        badge: 'bg-indigo-600 text-white',
+        badge: 'bg-green text-ink',
         border: 'hover:border-indigo-600/50',
       };
     case 'Technical':
       return {
         bg: 'bg-blue-950/70 text-blue-300 border-blue-700/60',
-        badge: 'bg-blue-600 text-white',
+        badge: 'bg-green text-ink',
         border: 'hover:border-blue-600/50',
       };
     case 'Workshop':
       return {
         bg: 'bg-amber-950/70 text-amber-300 border-amber-700/60',
-        badge: 'bg-amber-600 text-white',
+        badge: 'bg-amber-600 text-ink',
         border: 'hover:border-amber-600/50',
       };
     case 'Cultural':
       return {
         bg: 'bg-rose-950/70 text-rose-300 border-rose-700/60',
-        badge: 'bg-rose-600 text-white',
+        badge: 'bg-rose-600 text-ink',
         border: 'hover:border-rose-600/50',
       };
     case 'Sports':
       return {
         bg: 'bg-emerald-950/70 text-emerald-300 border-emerald-700/60',
-        badge: 'bg-emerald-600 text-white',
+        badge: 'bg-emerald-600 text-ink',
         border: 'hover:border-emerald-600/50',
       };
     case 'Seminar':
       return {
         bg: 'bg-sky-950/70 text-sky-300 border-sky-700/60',
-        badge: 'bg-sky-600 text-white',
+        badge: 'bg-sky-600 text-ink',
         border: 'hover:border-sky-600/50',
       };
     default:
       return {
-        bg: 'bg-slate-800/80 text-slate-300 border-slate-700/80',
-        badge: 'bg-slate-700 text-white',
-        border: 'hover:border-slate-600/50',
+        bg: 'bg-sand/80 text-ink-light border-border/80',
+        badge: 'bg-sand text-ink',
+        border: 'hover:border-border/50',
       };
   }
 };

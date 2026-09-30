@@ -115,20 +115,20 @@ export const AdminDashboardPage: React.FC = () => {
     attendees: count,
   }));
 
-  const BAR_COLORS = ['#2563EB', '#94A3B8', '#60A5FA', '#3B82F6', '#1E40AF', '#BFDBFE'];
+  const BAR_COLORS = ['#30D565', '#28C05A', '#E8F9EE', '#F7EEDB', '#EDE5D0', '#20201D'];
 
   return (
-    <div className="space-y-8 animate-fade-in text-tech-text">
+    <div className="space-y-8 animate-fade-in bg-ivory text-ink min-h-screen">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400">
+          <span className="text-xs font-semibold uppercase tracking-wider text-green">
             System Overview • ABES Engineering College
           </span>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-0.5">
+          <h1 className="font-display text-3xl text-ink tracking-tight mt-0.5">
             Admin Management Dashboard
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-ink-light mt-1">
             Real-time analytics, event registrations, and club operational controls.
           </p>
         </div>
@@ -137,14 +137,14 @@ export const AdminDashboardPage: React.FC = () => {
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => setShowEventModal(true)}
-            className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-xs font-semibold text-white flex items-center gap-1.5 shadow-sm transition-colors cursor-pointer"
+            className="px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-xs font-semibold text-ink flex items-center gap-1.5 shadow-subtle transition-colors cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Create Event</span>
           </button>
           <button
             onClick={() => setShowClubModal(true)}
-            className="px-3.5 py-2 rounded-xl bg-tech-card hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700/80 flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-6 py-3 rounded-pill bg-cream hover:bg-sand text-xs font-semibold text-ink border border-border flex items-center gap-1.5 transition-colors cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Add Club</span>
@@ -152,33 +152,33 @@ export const AdminDashboardPage: React.FC = () => {
           <button
             onClick={handleExportCsv}
             disabled={isExporting}
-            className="px-3.5 py-2 rounded-xl bg-tech-card hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700/80 flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer"
+            className="px-6 py-3 rounded-pill bg-cream hover:bg-sand text-xs font-semibold text-ink border border-border flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer"
           >
-            <Download className="w-3.5 h-3.5 text-emerald-400" />
+            <Download className="w-3.5 h-3.5 text-green" />
             <span>{isExporting ? 'Exporting...' : 'Export CSV'}</span>
           </button>
           <button
             onClick={handleReSeed}
             disabled={isSeeding}
             title="Re-populate with realistic sample events, clubs, and registrations"
-            className="p-2 rounded-xl bg-tech-card hover:bg-slate-700 text-slate-400 hover:text-white border border-slate-700/80 transition-colors cursor-pointer"
+            className="p-3 rounded-pill bg-cream hover:bg-sand text-ink-light hover:text-ink border border-border transition-colors cursor-pointer"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isSeeding ? 'animate-spin text-indigo-400' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${isSeeding ? 'animate-spin text-green' : ''}`} />
           </button>
         </div>
       </div>
 
       {/* Database Connection Status Banner */}
-      <div className="p-3.5 rounded-xl bg-tech-surface border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+      <div className="p-4 rounded-card bg-white border border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs shadow-subtle">
         <div className="flex items-center gap-2.5">
           <div
             className={`w-2.5 h-2.5 rounded-full ${
-              stats?.database?.isConnected ? 'bg-emerald-400' : 'bg-cyan-400'
+              stats?.database?.isConnected ? 'bg-green' : 'bg-amber-400'
             }`}
           />
           <div>
-            <span className="font-semibold text-slate-200">Database Engine: </span>
-            <span className="text-slate-400">
+            <span className="font-semibold text-ink">Database Engine: </span>
+            <span className="text-ink-light">
               {stats?.database?.isConnected
                 ? `Connected to MongoDB Atlas (${stats.database.host})`
                 : 'Built-in Resilient Storage Engine (Atlas-Ready via MONGODB_URI)'}
@@ -186,7 +186,7 @@ export const AdminDashboardPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-[11px] text-slate-400 font-normal">
+        <div className="text-[11px] text-ink-light font-normal">
           Verified Student RSVPs & Gate Check-in Desks Active
         </div>
       </div>
@@ -198,42 +198,42 @@ export const AdminDashboardPage: React.FC = () => {
           value={stats?.totalEvents || 0}
           subtitle="Published & Drafts"
           icon={CalendarDays}
-          color="indigo"
+          color="green"
         />
         <StatCard
           title="Upcoming Events"
           value={stats?.upcomingEvents || 0}
           subtitle="Happening this semester"
           icon={CalendarDays}
-          color="blue"
+          color="green"
         />
         <StatCard
           title="Total Registrations"
           value={stats?.totalRegistrations || 0}
           subtitle="Verified students"
           icon={ClipboardList}
-          color="emerald"
+          color="green"
         />
         <StatCard
           title="Active Campus Clubs"
           value={stats?.activeClubs || 0}
           subtitle="Registered societies"
           icon={Users}
-          color="amber"
+          color="green"
         />
       </div>
 
       {/* RECHARTS ANALYTICS ROW */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Registration Velocity Area Chart */}
-        <div className="lg:col-span-7 p-5 rounded-2xl bg-tech-surface border border-slate-800 space-y-4">
+        <div className="lg:col-span-7 p-6 rounded-card bg-white border border-border shadow-subtle space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-bold text-white flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-cyan-400" />
+              <h2 className="text-sm font-bold text-ink flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-green" />
                 <span>Registration Velocity (Weekly Trend)</span>
               </h2>
-              <p className="text-xs text-slate-400">Daily student RSVPs across all campus societies</p>
+              <p className="text-xs text-ink-light">Daily student RSVPs across all campus societies</p>
             </div>
           </div>
 
@@ -242,31 +242,31 @@ export const AdminDashboardPage: React.FC = () => {
               <AreaChart data={velocityData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorSignups" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#2563EB" stopOpacity={0.4} />
-                    <stop offset="95%" stopColor="#2563EB" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#30D565" stopOpacity={0.4} />
+                    <stop offset="95%" stopColor="#30D565" stopOpacity={0.0} />
                   </linearGradient>
                   <linearGradient id="colorViews" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#8B5CF6" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="#8B5CF6" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#F7EEDB" stopOpacity={0.6} />
+                    <stop offset="95%" stopColor="#F7EEDB" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" vertical={false} />
-                <XAxis dataKey="day" stroke="#64748B" fontSize={11} tickLine={false} />
-                <YAxis stroke="#64748B" fontSize={11} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#EFEBE0" vertical={false} />
+                <XAxis dataKey="day" stroke="#9B9B96" fontSize={11} tickLine={false} />
+                <YAxis stroke="#9B9B96" fontSize={11} tickLine={false} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#0B1530',
-                    borderColor: '#334155',
-                    borderRadius: '10px',
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#EFEBE0',
+                    borderRadius: '16px',
                     fontSize: '12px',
-                    color: '#F8FAFC',
+                    color: '#20201D',
                   }}
                 />
                 <Area
                   type="monotone"
                   dataKey="signups"
                   name="RSVPs"
-                  stroke="#2563EB"
+                  stroke="#30D565"
                   strokeWidth={2.5}
                   fillOpacity={1}
                   fill="url(#colorSignups)"
@@ -275,7 +275,7 @@ export const AdminDashboardPage: React.FC = () => {
                   type="monotone"
                   dataKey="views"
                   name="Page Views"
-                  stroke="#8B5CF6"
+                  stroke="#20201D"
                   strokeWidth={1.5}
                   strokeDasharray="4 4"
                   fillOpacity={1}
@@ -287,30 +287,30 @@ export const AdminDashboardPage: React.FC = () => {
         </div>
 
         {/* Category Breakdown Bar Chart */}
-        <div className="lg:col-span-5 p-5 rounded-2xl bg-tech-surface border border-slate-800 space-y-4">
+        <div className="lg:col-span-5 p-6 rounded-card bg-white border border-border shadow-subtle space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-bold text-white flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-purple-400" />
+              <h2 className="text-sm font-bold text-ink flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-green" />
                 <span>Attendees by Category</span>
               </h2>
-              <p className="text-xs text-slate-400">Total student interest breakdown</p>
+              <p className="text-xs text-ink-light">Total student interest breakdown</p>
             </div>
           </div>
 
           <div className="h-64 w-full pt-2">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={categoryChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" vertical={false} />
-                <XAxis dataKey="name" stroke="#64748B" fontSize={10} tickLine={false} />
-                <YAxis stroke="#64748B" fontSize={11} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#EFEBE0" vertical={false} />
+                <XAxis dataKey="name" stroke="#9B9B96" fontSize={10} tickLine={false} />
+                <YAxis stroke="#9B9B96" fontSize={11} tickLine={false} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#0B1530',
-                    borderColor: '#334155',
-                    borderRadius: '10px',
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#EFEBE0',
+                    borderRadius: '16px',
                     fontSize: '12px',
-                    color: '#F8FAFC',
+                    color: '#20201D',
                   }}
                 />
                 <Bar dataKey="attendees" radius={[6, 6, 0, 0]}>
@@ -327,15 +327,15 @@ export const AdminDashboardPage: React.FC = () => {
       {/* Main Grid: Recent Registrations & Category Distribution */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Recent Registrations Table */}
-        <div className="lg:col-span-8 p-5 rounded-2xl bg-tech-surface border border-slate-800 space-y-4">
+        <div className="lg:col-span-12 p-6 rounded-card bg-white border border-border shadow-subtle space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-base font-semibold text-white">Recent Student Registrations</h2>
-              <p className="text-xs text-slate-400">Latest students securing spots for events.</p>
+              <h2 className="text-base font-semibold text-ink">Recent Student Registrations</h2>
+              <p className="text-xs text-ink-light">Latest students securing spots for events.</p>
             </div>
             <Link
               to="/admin/registrations"
-              className="text-xs font-medium text-indigo-400 hover:text-indigo-300 flex items-center gap-1"
+              className="text-xs font-medium text-green hover:text-green-hover flex items-center gap-1"
             >
               <span>View All</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -343,43 +343,43 @@ export const AdminDashboardPage: React.FC = () => {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-xs bg-white">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400 font-medium uppercase tracking-wider text-[11px]">
-                  <th className="pb-2.5 pl-2">Student</th>
-                  <th className="pb-2.5">Event</th>
-                  <th className="pb-2.5">College</th>
-                  <th className="pb-2.5">Year</th>
-                  <th className="pb-2.5">Pass ID</th>
+                <tr className="border-b border-border-light text-ink-light bg-cream font-medium uppercase tracking-wider text-[11px]">
+                  <th className="py-3 pl-4">Student</th>
+                  <th className="py-3">Event</th>
+                  <th className="py-3">College</th>
+                  <th className="py-3">Year</th>
+                  <th className="py-3">Pass ID</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-border-light">
                 {stats?.recentRegistrations && stats.recentRegistrations.length > 0 ? (
                   stats.recentRegistrations.map((reg: any) => (
-                    <tr key={reg._id} className="hover:bg-slate-800/30 transition-colors">
-                      <td className="py-2.5 pl-2 font-medium text-white">
+                    <tr key={reg._id} className="hover:bg-cream/50 transition-colors">
+                      <td className="py-3 pl-4 font-medium text-ink">
                         <div>{reg.fullName}</div>
-                        <div className="text-[10px] text-slate-400 font-normal">{reg.email}</div>
+                        <div className="text-[10px] text-ink-light font-normal">{reg.email}</div>
                       </td>
-                      <td className="py-2.5 text-slate-300 max-w-[180px] truncate">
+                      <td className="py-3 text-ink-light max-w-[180px] truncate">
                         {reg.event?.title || 'Event'}
                       </td>
-                      <td className="py-2.5 text-slate-400 max-w-[150px] truncate">
+                      <td className="py-3 text-ink-light max-w-[150px] truncate">
                         {reg.college}
                       </td>
-                      <td className="py-2.5 text-slate-300">
-                        <span className="px-1.5 py-0.5 rounded bg-slate-800 text-[10px] font-medium border border-slate-700">
+                      <td className="py-3 text-ink-light">
+                        <span className="px-2 py-1 rounded bg-cream text-[10px] font-medium border border-border-light">
                           {reg.academicYear}
                         </span>
                       </td>
-                      <td className="py-2.5 font-mono text-cyan-300 font-medium text-[11px]">
+                      <td className="py-3 font-mono text-green font-medium text-[11px]">
                         {reg.registrationId}
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={5} className="py-6 text-center text-slate-500">
+                    <td colSpan={5} className="py-6 text-center text-ink-faint">
                       No registrations recorded yet.
                     </td>
                   </tr>
@@ -387,10 +387,6 @@ export const AdminDashboardPage: React.FC = () => {
               </tbody>
             </table>
           </div>
-        </div>
-
-        {/* Empty Column space to keep layout or we can span the table full if we wanted, but keeping col-span-4 empty is fine, or we can just remove it and make the table span 12. Let's just make the table col-span-12. Actually I'll just remove the content but leave the div to not break grid layout. */}
-        <div className="lg:col-span-4 space-y-6">
         </div>
       </div>
 

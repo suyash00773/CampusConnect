@@ -6,7 +6,7 @@ interface StatCardProps {
   value: number | string;
   subtitle?: string;
   icon: LucideIcon;
-  color?: 'purple' | 'blue' | 'emerald' | 'amber' | 'indigo';
+  color?: 'purple' | 'blue' | 'emerald' | 'amber' | 'indigo' | 'green';
 }
 
 export const StatCard: React.FC<StatCardProps> = ({
@@ -14,44 +14,24 @@ export const StatCard: React.FC<StatCardProps> = ({
   value,
   subtitle,
   icon: Icon,
-  color = 'indigo',
+  color, // kept for prop compat, ignoring for design
 }) => {
-  const colorStyles: Record<string, { iconBg: string }> = {
-    purple: {
-      iconBg: 'bg-indigo-950/70 border-indigo-700/40 text-indigo-400',
-    },
-    indigo: {
-      iconBg: 'bg-indigo-950/70 border-indigo-700/40 text-indigo-400',
-    },
-    blue: {
-      iconBg: 'bg-blue-950/70 border-blue-700/40 text-blue-400',
-    },
-    emerald: {
-      iconBg: 'bg-emerald-950/70 border-emerald-700/40 text-emerald-400',
-    },
-    amber: {
-      iconBg: 'bg-amber-950/70 border-amber-700/40 text-amber-400',
-    },
-  };
-
-  const style = colorStyles[color] || colorStyles.indigo;
-
   return (
-    <div className="p-5 rounded-xl border border-slate-800 bg-tech-surface/80 flex items-center justify-between shadow-sm">
+    <div className="p-6 rounded-card border border-border bg-white flex items-center justify-between shadow-subtle hover:shadow-card transition-shadow">
       <div>
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+        <span className="text-xs font-semibold uppercase tracking-wider text-ink-light">
           {title}
         </span>
-        <div className="text-2xl font-bold text-white mt-0.5 tracking-tight">
+        <div className="text-3xl font-display font-bold text-ink mt-1 tracking-tight">
           {value}
         </div>
         {subtitle && (
-          <p className="text-xs text-slate-400 mt-1 font-normal">{subtitle}</p>
+          <p className="text-sm text-ink-light mt-1 font-medium">{subtitle}</p>
         )}
       </div>
 
-      <div className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 ${style.iconBg}`}>
-        <Icon className="w-5 h-5" />
+      <div className="w-12 h-12 rounded-xl border border-border flex items-center justify-center shrink-0 bg-cream">
+        <Icon className="w-6 h-6 text-ink" />
       </div>
     </div>
   );

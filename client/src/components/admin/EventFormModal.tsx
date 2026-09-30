@@ -152,19 +152,19 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in overflow-y-auto">
-      <div className="relative w-full max-w-2xl my-8 rounded-xl bg-tech-surface border border-slate-800 shadow-xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/40 backdrop-blur-sm animate-fade-in overflow-y-auto">
+      <div className="relative w-full max-w-2xl my-8 rounded-2xl bg-white border border-border shadow-modal overflow-hidden">
         {/* Header */}
-        <div className="p-5 bg-tech-bg border-b border-slate-800 flex items-center justify-between">
+        <div className="p-6 bg-cream border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-              <Save className="w-4 h-4" />
+            <div className="w-10 h-10 rounded-xl bg-green-light border border-green/20 flex items-center justify-center text-green">
+              <Save className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white leading-tight">
+              <h3 className="text-lg font-bold text-ink leading-tight font-display">
                 {eventToEdit ? 'Edit Event Details' : 'Create New Campus Event'}
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-sm text-ink-light">
                 Publish high-impact events for students across faculties.
               </p>
             </div>
@@ -172,32 +172,32 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700 cursor-pointer"
+            className="p-2 rounded-full text-ink-light hover:text-ink bg-white hover:bg-sand border border-border cursor-pointer transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
+        <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[75vh] overflow-y-auto bg-white">
           {error && (
-            <div className="p-4 rounded-xl bg-rose-950/70 border border-rose-500/40 text-rose-300 text-xs flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0" />
-              <span>{error}</span>
+            <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2">
+              <AlertCircle className="w-5 h-5 shrink-0 text-red-600" />
+              <span className="font-medium">{error}</span>
             </div>
           )}
 
           {/* Event Title */}
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Event Title <span className="text-rose-400">*</span>
+            <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+              Event Title <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. HackNova 2026: National Collegiate Hackathon"
-              className="w-full px-3.5 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+              className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink placeholder-ink-faint focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
               required
             />
           </div>
@@ -205,13 +205,13 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
           {/* Club & Category Selection */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Organizing Club <span className="text-rose-400">*</span>
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+                Organizing Club <span className="text-red-600">*</span>
               </label>
               <select
                 value={clubId}
                 onChange={(e) => setClubId(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500 cursor-pointer"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green cursor-pointer transition-colors"
                 required
               >
                 {clubs.map((c) => (
@@ -223,13 +223,13 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Category <span className="text-rose-400">*</span>
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+                Category <span className="text-red-600">*</span>
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value as EventCategory)}
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500 cursor-pointer"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green cursor-pointer transition-colors"
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>
@@ -243,20 +243,20 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
           {/* Date & Times */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Event Date <span className="text-rose-400">*</span>
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+                Event Date <span className="text-red-600">*</span>
               </label>
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
                 Start Time
               </label>
               <input
@@ -264,12 +264,12 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
                 placeholder="10:00 AM"
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
                 End Time
               </label>
               <input
@@ -277,7 +277,7 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
                 placeholder="04:00 PM"
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
               />
             </div>
           </div>
@@ -285,27 +285,27 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
           {/* Venue & Location Type & Capacity */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="sm:col-span-1">
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Venue <span className="text-rose-400">*</span>
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+                Venue <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
                 value={venue}
                 onChange={(e) => setVenue(e.target.value)}
                 placeholder="Auditorium Hall B"
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
                 Mode
               </label>
               <select
                 value={locationType}
                 onChange={(e) => setLocationType(e.target.value as any)}
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500 cursor-pointer"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green cursor-pointer transition-colors"
               >
                 <option value="In-Person">In-Person</option>
                 <option value="Virtual">Virtual</option>
@@ -314,15 +314,15 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Max Capacity <span className="text-rose-400">*</span>
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+                Max Capacity <span className="text-red-600">*</span>
               </label>
               <input
                 type="number"
                 min={1}
                 value={capacity}
                 onChange={(e) => setCapacity(Number(e.target.value))}
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
                 required
               />
             </div>
@@ -330,36 +330,36 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
 
           {/* Banner URL */}
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Banner Image URL <span className="text-rose-400">*</span>
+            <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+              Banner Image URL <span className="text-red-600">*</span>
             </label>
             <input
               type="url"
               value={bannerUrl}
               onChange={(e) => setBannerUrl(e.target.value)}
               placeholder="https://images.unsplash.com/photo-..."
-              className="w-full px-3.5 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink placeholder-ink-faint focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
               required
             />
           </div>
 
           {/* Short Description */}
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Short Summary <span className="text-slate-500 font-normal">(Card preview)</span>
+            <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+              Short Summary <span className="text-ink-light font-normal normal-case tracking-normal">(Card preview)</span>
             </label>
             <textarea
               rows={2}
               value={shortDescription}
               onChange={(e) => setShortDescription(e.target.value)}
               placeholder="A brief 1-2 sentence preview for cards..."
-              className="w-full px-3.5 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink placeholder-ink-faint focus:outline-none focus:border-green focus:ring-1 focus:ring-green resize-none transition-colors"
             />
           </div>
 
           {/* Full Description */}
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
+            <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
               Detailed Description
             </label>
             <textarea
@@ -367,47 +367,47 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Comprehensive event details, agendas, keynote speakers, judging criteria, certificates..."
-              className="w-full px-3.5 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink placeholder-ink-faint focus:outline-none focus:border-green focus:ring-1 focus:ring-green resize-none transition-colors"
             />
           </div>
 
           {/* Tags & Requirements */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Tags <span className="text-slate-500 font-normal">(Comma-separated)</span>
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+                Tags <span className="text-ink-light font-normal normal-case tracking-normal">(Comma-separated)</span>
               </label>
               <input
                 type="text"
                 value={tagsStr}
                 onChange={(e) => setTagsStr(e.target.value)}
                 placeholder="AI, Hackathon, Coding, Prizes"
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Requirements <span className="text-slate-500 font-normal">(Comma-separated)</span>
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+                Requirements <span className="text-ink-light font-normal normal-case tracking-normal">(Comma-separated)</span>
               </label>
               <input
                 type="text"
                 value={reqsStr}
                 onChange={(e) => setReqsStr(e.target.value)}
                 placeholder="College ID, Laptop, Team of 3"
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
               />
             </div>
           </div>
 
           {/* Status & Featured Checkbox */}
-          <div className="pt-2 flex flex-wrap items-center justify-between gap-4 p-3.5 rounded-lg bg-tech-bg border border-slate-800">
+          <div className="pt-2 flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-cream border border-border">
             <div className="flex items-center gap-3">
-              <label className="text-xs font-medium text-slate-300">Publishing Status:</label>
+              <label className="text-sm font-semibold text-ink">Publishing Status:</label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as any)}
-                className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white"
+                className="px-3 py-2 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors cursor-pointer"
               >
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
@@ -416,32 +416,32 @@ export const EventFormModal: React.FC<EventFormModalProps> = ({
               </select>
             </div>
 
-            <label className="flex items-center gap-2 cursor-pointer select-none text-xs font-medium text-slate-200">
+            <label className="flex items-center gap-2 cursor-pointer select-none text-sm font-medium text-ink">
               <input
                 type="checkbox"
                 checked={featured}
                 onChange={(e) => setFeatured(e.target.checked)}
-                className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 bg-slate-900 border-slate-700 cursor-pointer"
+                className="w-5 h-5 rounded text-green focus:ring-green bg-white border-border cursor-pointer"
               />
               <span>Highlight as Featured Spotlight</span>
             </label>
           </div>
 
           {/* Actions */}
-          <div className="pt-4 flex items-center justify-end gap-2.5 border-t border-slate-800">
+          <div className="pt-4 flex items-center justify-end gap-3 border-t border-border mt-4">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer"
+              className="px-6 py-3 rounded-pill text-sm font-semibold bg-cream hover:bg-sand text-ink border border-border transition-colors cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white shadow-sm flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer"
+              className="px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-sm font-semibold text-ink shadow-sm flex items-center gap-2 transition-colors disabled:opacity-50 cursor-pointer"
             >
-              <Save className="w-3.5 h-3.5" />
+              <Save className="w-4 h-4" />
               <span>{isSubmitting ? 'Saving...' : eventToEdit ? 'Update Event' : 'Create Event'}</span>
             </button>
           </div>

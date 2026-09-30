@@ -94,24 +94,24 @@ export const AdminEventsPage: React.FC = () => {
   });
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-6 animate-fade-in bg-ivory min-h-screen">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400">
+          <span className="text-xs font-semibold uppercase tracking-wider text-green">
             Event Administration
           </span>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-0.5">
+          <h1 className="font-display text-3xl text-ink tracking-tight mt-0.5">
             Manage Events
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-ink-light mt-1">
             Publish new university events, modify schedules, and manage seat capacities.
           </p>
         </div>
 
         <button
           onClick={handleOpenAdd}
-          className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-medium text-white flex items-center justify-center gap-2 transition-colors cursor-pointer self-start sm:self-auto"
+          className="px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-xs font-semibold text-ink flex items-center justify-center gap-2 transition-colors cursor-pointer self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Event</span>
@@ -119,15 +119,15 @@ export const AdminEventsPage: React.FC = () => {
       </div>
 
       {/* Search and Filters Bar */}
-      <div className="p-3.5 rounded-xl bg-tech-surface border border-slate-800 flex flex-col md:flex-row gap-3 items-center justify-between">
+      <div className="p-4 rounded-card bg-white border border-border shadow-subtle flex flex-col md:flex-row gap-3 items-center justify-between">
         <div className="relative w-full md:w-80">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-light" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by event title or venue..."
-            className="w-full pl-10 pr-4 py-2 rounded-lg bg-tech-card border border-slate-700/80 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+            className="w-full pl-10 pr-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink placeholder-ink-faint focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
           />
         </div>
 
@@ -136,7 +136,7 @@ export const AdminEventsPage: React.FC = () => {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-3 py-2 rounded-lg bg-tech-card border border-slate-700/80 text-xs text-slate-200 focus:outline-none focus:border-indigo-500 cursor-pointer"
+            className="px-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green cursor-pointer"
           >
             <option value="All">All Categories</option>
             <option value="Technical">Technical</option>
@@ -152,7 +152,7 @@ export const AdminEventsPage: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 rounded-lg bg-tech-card border border-slate-700/80 text-xs text-slate-200 focus:outline-none focus:border-indigo-500 cursor-pointer"
+            className="px-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green cursor-pointer"
           >
             <option value="All">All Statuses</option>
             <option value="published">Published</option>
@@ -167,21 +167,21 @@ export const AdminEventsPage: React.FC = () => {
       {loading ? (
         <Loader label="Loading events..." size="lg" />
       ) : filteredEvents.length > 0 ? (
-        <div className="rounded-xl bg-tech-surface border border-slate-800 overflow-hidden shadow-sm">
+        <div className="rounded-card bg-white border border-border overflow-hidden shadow-subtle">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-xs bg-white">
               <thead>
-                <tr className="bg-tech-card/80 border-b border-slate-800 text-slate-400 font-medium uppercase tracking-wider text-[11px]">
-                  <th className="py-3 pl-6">Event</th>
-                  <th className="py-3 px-4">Club</th>
-                  <th className="py-3 px-4">Category</th>
-                  <th className="py-3 px-4">Date & Time</th>
-                  <th className="py-3 px-4">Registrations / Cap</th>
-                  <th className="py-3 px-4">Status</th>
-                  <th className="py-3 pr-6 text-right">Actions</th>
+                <tr className="bg-cream border-b border-border-light text-ink-light font-medium uppercase tracking-wider text-[11px]">
+                  <th className="py-4 pl-6">Event</th>
+                  <th className="py-4 px-4">Club</th>
+                  <th className="py-4 px-4">Category</th>
+                  <th className="py-4 px-4">Date & Time</th>
+                  <th className="py-4 px-4">Registrations / Cap</th>
+                  <th className="py-4 px-4">Status</th>
+                  <th className="py-4 pr-6 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-border-light">
                 {filteredEvents.map((event) => {
                   const clubName = typeof event.club === 'object' ? event.club.name : 'Club';
                   const percent = Math.min(
@@ -190,20 +190,20 @@ export const AdminEventsPage: React.FC = () => {
                   );
 
                   return (
-                    <tr key={event._id} className="hover:bg-slate-800/30 transition-colors">
+                    <tr key={event._id} className="hover:bg-cream/50 transition-colors">
                       {/* Event Banner & Title */}
-                      <td className="py-3.5 pl-6">
+                      <td className="py-4 pl-6">
                         <div className="flex items-center gap-3">
                           <img
                             src={event.bannerUrl}
                             alt={event.title}
-                            className="w-10 h-10 rounded-lg object-cover border border-slate-700 shrink-0"
+                            className="w-10 h-10 rounded-lg object-cover border border-border shrink-0"
                           />
                           <div>
-                            <span className="font-semibold text-xs text-white line-clamp-1">
+                            <span className="font-semibold text-xs text-ink line-clamp-1">
                               {event.title}
                             </span>
-                            <span className="text-[11px] text-slate-400 block truncate max-w-xs">
+                            <span className="text-[11px] text-ink-light block truncate max-w-xs">
                               {event.venue}
                             </span>
                           </div>
@@ -211,29 +211,29 @@ export const AdminEventsPage: React.FC = () => {
                       </td>
 
                       {/* Club */}
-                      <td className="py-3.5 px-4 text-slate-300 font-medium">{clubName}</td>
+                      <td className="py-4 px-4 text-ink-light font-medium">{clubName}</td>
 
                       {/* Category */}
-                      <td className="py-3.5 px-4">
+                      <td className="py-4 px-4">
                         <Badge label={event.category} />
                       </td>
 
                       {/* Date & Time */}
-                      <td className="py-3.5 px-4 text-slate-300">
-                        <div className="font-medium text-white">{formatEventDate(event.date)}</div>
-                        <div className="text-[11px] text-slate-400">{event.startTime}</div>
+                      <td className="py-4 px-4 text-ink-light">
+                        <div className="font-medium text-ink">{formatEventDate(event.date)}</div>
+                        <div className="text-[11px] text-ink-light">{event.startTime}</div>
                       </td>
 
                       {/* Registration Capacity Progress */}
-                      <td className="py-3.5 px-4">
+                      <td className="py-4 px-4">
                         <div className="w-28 space-y-1">
-                          <div className="flex items-center justify-between text-[11px] text-slate-300">
+                          <div className="flex items-center justify-between text-[11px] text-ink-light">
                             <span>{event.registeredCount || 0}</span>
-                            <span className="text-slate-500">/ {event.capacity}</span>
+                            <span className="text-ink-faint">/ {event.capacity}</span>
                           </div>
-                          <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                          <div className="w-full h-1.5 rounded-full bg-cream overflow-hidden">
                             <div
-                              className="h-full bg-indigo-500 rounded-full"
+                              className="h-full bg-green rounded-full"
                               style={{ width: `${percent}%` }}
                             />
                           </div>
@@ -241,32 +241,32 @@ export const AdminEventsPage: React.FC = () => {
                       </td>
 
                       {/* Status */}
-                      <td className="py-3.5 px-4">
+                      <td className="py-4 px-4">
                         <Badge label={event.status} variant="status" status={event.status as any} />
                       </td>
 
                       {/* Action buttons */}
-                      <td className="py-3.5 pr-6 text-right">
+                      <td className="py-4 pr-6 text-right">
                         <div className="flex items-center justify-end gap-1.5">
                           <Link
                             to={`/events/${event.slug || event._id}`}
                             target="_blank"
                             title="View public page"
-                            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+                            className="p-2 rounded-pill bg-cream hover:bg-sand text-ink transition-colors"
                           >
                             <ExternalLink className="w-3.5 h-3.5" />
                           </Link>
                           <button
                             onClick={() => handleOpenEdit(event)}
                             title="Edit event"
-                            className="p-1.5 rounded-lg bg-slate-800 hover:bg-indigo-900/60 text-slate-400 hover:text-indigo-300 transition-colors cursor-pointer"
+                            className="p-2 rounded-pill bg-cream hover:bg-sand text-ink transition-colors cursor-pointer"
                           >
                             <Edit2 className="w-3.5 h-3.5" />
                           </button>
                           <button
                             onClick={() => handleOpenDelete(event)}
                             title="Delete event"
-                            className="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-900/60 text-slate-400 hover:text-rose-300 transition-colors cursor-pointer"
+                            className="p-2 rounded-pill bg-cream hover:bg-red-50 text-ink hover:text-red-700 transition-colors cursor-pointer"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
@@ -280,10 +280,10 @@ export const AdminEventsPage: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="text-center py-16 rounded-xl bg-tech-surface border border-slate-800 space-y-3">
-          <Calendar className="w-8 h-8 text-slate-500 mx-auto" />
-          <h3 className="text-sm font-semibold text-white">No events match the search criteria</h3>
-          <p className="text-xs text-slate-400">Try changing your filters or add a new event.</p>
+        <div className="text-center py-16 rounded-card bg-white border border-border space-y-3">
+          <Calendar className="w-8 h-8 text-ink-faint mx-auto" />
+          <h3 className="text-sm font-semibold text-ink">No events match the search criteria</h3>
+          <p className="text-xs text-ink-light">Try changing your filters or add a new event.</p>
         </div>
       )}
 

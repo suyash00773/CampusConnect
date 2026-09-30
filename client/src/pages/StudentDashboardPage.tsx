@@ -153,30 +153,30 @@ export const StudentDashboardPage: React.FC = () => {
   const unreadNotifsCount = student.notifications.filter((n) => !n.read).length;
 
   return (
-    <div className="bg-tech-bg text-tech-text min-h-screen pb-20">
+    <div className="bg-ivory text-ink min-h-screen pb-20">
       {/* Top Banner / Student Greeting */}
-      <div className="border-b border-slate-800 bg-tech-surface/90 py-8">
+      <div className="border-b border-border bg-white py-8 shadow-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <img
                 src={student.avatar}
                 alt={student.name}
-                className="w-16 h-16 rounded-2xl object-cover border-2 border-indigo-500/50 shadow-md"
+                className="w-16 h-16 rounded-full object-cover border-2 border-green shadow-md"
               />
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  <h1 className="font-display text-2xl sm:text-3xl text-ink tracking-tight">
                     {student.name}
                   </h1>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                  <span className="px-2 py-0.5 rounded-pill text-[10px] font-semibold bg-green-light text-green border border-green">
                     Student
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  ID: <span className="font-mono text-slate-300">{student.studentId}</span> • {student.department} ({student.academicYear})
+                <p className="text-xs text-ink-light mt-0.5">
+                  ID: <span className="font-mono text-ink">{student.studentId}</span> • {student.department} ({student.academicYear})
                 </p>
-                <p className="text-[11px] text-slate-400 font-mono">
+                <p className="text-[11px] text-ink-light font-mono">
                   {student.college}
                 </p>
               </div>
@@ -185,7 +185,7 @@ export const StudentDashboardPage: React.FC = () => {
             <div className="flex items-center gap-3">
               <Link
                 to="/events"
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-xs font-semibold text-white shadow-sm flex items-center gap-1.5 transition-colors"
+                className="px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-xs font-semibold text-ink shadow-subtle flex items-center gap-1.5 transition-colors"
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Explore Events</span>
@@ -215,24 +215,24 @@ export const StudentDashboardPage: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as TabType)}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all duration-200 ${
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-pill text-xs font-semibold transition-all duration-200 ${
                   activeTab === tab.id
-                    ? 'bg-tech-card text-white border border-slate-700 shadow-sm'
-                    : 'bg-tech-surface text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
+                    ? 'bg-cream text-ink border-l-4 border-green shadow-subtle'
+                    : 'bg-transparent text-ink-light hover:text-ink hover:bg-cream border border-transparent'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <tab.icon className={`w-4 h-4 ${activeTab === tab.id ? 'text-indigo-400' : 'text-slate-500'}`} />
+                  <tab.icon className={`w-4 h-4 ${activeTab === tab.id ? 'text-green' : 'text-ink-light'}`} />
                   <span>{tab.label}</span>
                 </div>
                 {tab.badge && (
-                  <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                  <span className="w-2 h-2 rounded-full bg-green" />
                 )}
               </button>
             ))}
 
-            <div className="pt-6 border-t border-slate-800 text-[11px] text-slate-500 p-2 space-y-1">
-              <div className="font-semibold text-slate-400">Institutional Notice</div>
+            <div className="pt-6 border-t border-border mt-6 text-[11px] text-ink-light p-2 space-y-1">
+              <div className="font-semibold text-ink">Institutional Notice</div>
               <p>Admission passes are verified against your college registration ID at campus gates.</p>
             </div>
           </div>
@@ -242,37 +242,35 @@ export const StudentDashboardPage: React.FC = () => {
             {/* OVERVIEW TAB */}
             {activeTab === 'overview' && (
               <div className="space-y-6">
-                {/* 4 Metric Cards */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <div className="p-4 rounded-xl bg-tech-surface border border-slate-800">
-                    <div className="text-[11px] text-slate-400">Joined Clubs</div>
-                    <div className="text-2xl font-bold text-white mt-1">{joinedClubs.length}</div>
-                    <div className="text-[10px] text-cyan-400 mt-0.5">Active Member</div>
+                {/* Metric Cards */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-card bg-white border border-border shadow-subtle">
+                    <div className="text-[11px] text-ink-light">Joined Clubs</div>
+                    <div className="text-2xl font-bold text-ink mt-1">{joinedClubs.length}</div>
+                    <div className="text-[10px] text-green mt-0.5">Active Member</div>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-tech-surface border border-slate-800">
-                    <div className="text-[11px] text-slate-400">Registered Passes</div>
-                    <div className="text-2xl font-bold text-indigo-400 mt-1">{registeredEventsList.length}</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">Confirmed RSVPs</div>
+                  <div className="p-4 rounded-card bg-white border border-border shadow-subtle">
+                    <div className="text-[11px] text-ink-light">Registered Passes</div>
+                    <div className="text-2xl font-bold text-ink mt-1">{registeredEventsList.length}</div>
+                    <div className="text-[10px] text-ink-light mt-0.5">Confirmed RSVPs</div>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-tech-surface border border-slate-800">
-                    <div className="text-[11px] text-slate-400">Notifications</div>
-                    <div className="text-2xl font-bold text-purple-400 mt-1">{unreadNotifsCount}</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">Unread Updates</div>
+                  <div className="p-4 rounded-card bg-white border border-border shadow-subtle">
+                    <div className="text-[11px] text-ink-light">Notifications</div>
+                    <div className="text-2xl font-bold text-ink mt-1">{unreadNotifsCount}</div>
+                    <div className="text-[10px] text-ink-light mt-0.5">Unread Updates</div>
                   </div>
-
-                  {/* Attendance status removed */}
                 </div>
 
                 {/* Next Upcoming Event Spotlight Pass */}
                 {registeredEventsList.length > 0 ? (
-                  <div className="rounded-2xl bg-tech-surface border border-slate-800 p-6 space-y-4">
+                  <div className="rounded-card bg-white border border-border shadow-subtle p-6 space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-semibold text-indigo-400">
+                      <span className="text-[11px] font-semibold text-ink-light">
                         Next Upcoming Entry Pass
                       </span>
-                      <span className="text-xs font-mono text-emerald-400 flex items-center gap-1">
+                      <span className="text-xs font-mono text-green flex items-center gap-1">
                         <CheckCircle2 className="w-3.5 h-3.5" />
                         Confirmed
                       </span>
@@ -280,20 +278,20 @@ export const StudentDashboardPage: React.FC = () => {
 
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div>
-                        <h3 className="text-lg font-bold text-white">
+                        <h3 className="text-lg font-bold text-ink">
                           {registeredEventsList[0].event.title}
                         </h3>
-                        <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300 mt-2">
+                        <div className="flex flex-wrap items-center gap-4 text-xs text-ink-light mt-2">
                           <div className="flex items-center gap-1.5">
-                            <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+                            <Calendar className="w-3.5 h-3.5 text-ink-light" />
                             <span>{registeredEventsList[0].event.date}</span>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <Clock className="w-3.5 h-3.5 text-purple-400" />
+                            <Clock className="w-3.5 h-3.5 text-ink-light" />
                             <span>{registeredEventsList[0].event.startTime}</span>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <MapPin className="w-3.5 h-3.5 text-blue-400" />
+                            <MapPin className="w-3.5 h-3.5 text-ink-light" />
                             <span>{registeredEventsList[0].event.venue}</span>
                           </div>
                         </div>
@@ -304,24 +302,24 @@ export const StudentDashboardPage: React.FC = () => {
                           onClick={() =>
                             openDigitalPass(registeredEventsList[0].regId, registeredEventsList[0].event)
                           }
-                          className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs flex items-center gap-2 shadow-sm transition-colors"
+                          className="px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-ink font-semibold text-xs flex items-center gap-2 shadow-subtle transition-colors"
                         >
-                          <QrCode className="w-4 h-4 text-cyan-300" />
+                          <QrCode className="w-4 h-4 text-ink" />
                           <span>View Digital Pass</span>
                         </button>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <div className="p-8 rounded-2xl bg-tech-surface border border-slate-800 text-center space-y-3">
-                    <Calendar className="w-8 h-8 text-slate-500 mx-auto" />
-                    <h3 className="text-sm font-bold text-white">No Upcoming Event Passes</h3>
-                    <p className="text-xs text-slate-400 max-w-md mx-auto">
+                  <div className="p-8 rounded-card bg-white border border-border shadow-subtle text-center space-y-3">
+                    <Calendar className="w-8 h-8 text-ink-faint mx-auto" />
+                    <h3 className="text-sm font-bold text-ink">No Upcoming Event Passes</h3>
+                    <p className="text-xs text-ink-light max-w-md mx-auto">
                       You haven't reserved admission to any upcoming campus hackathons or sessions yet.
                     </p>
                     <Link
                       to="/events"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition-colors"
+                      className="inline-flex items-center gap-1.5 px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-ink text-xs font-semibold transition-colors"
                     >
                       <span>Find Events</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -330,13 +328,13 @@ export const StudentDashboardPage: React.FC = () => {
                 )}
 
                 {/* Quick Chapters Roster */}
-                <div className="rounded-2xl bg-tech-surface border border-slate-800 p-6 space-y-4">
+                <div className="rounded-card bg-white border border-border shadow-subtle p-6 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-bold text-white uppercase tracking-wider text-slate-400">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-ink">
                       Affiliated Societies ({joinedClubs.length})
                     </h3>
-                    <Link to="/clubs" className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold">
-                      Explore All Clubs
+                    <Link to="/clubs" className="text-xs text-ink font-semibold">
+                      Explore All Clubs &rarr;
                     </Link>
                   </div>
 
@@ -345,16 +343,16 @@ export const StudentDashboardPage: React.FC = () => {
                       <Link
                         key={club._id}
                         to={`/clubs/${club.slug || club._id}`}
-                        className="p-3 rounded-xl bg-tech-card border border-slate-800 hover:border-slate-700 flex items-center gap-3 transition-colors"
+                        className="p-3 rounded-xl bg-cream border border-border hover:border-ink-light flex items-center gap-3 transition-colors"
                       >
                         <img
                           src={club.logoUrl}
                           alt={club.name}
-                          className="w-10 h-10 rounded-lg object-cover bg-slate-900"
+                          className="w-10 h-10 rounded-lg object-cover bg-white"
                         />
                         <div className="truncate">
-                          <div className="text-xs font-bold text-white truncate">{club.name}</div>
-                          <div className="text-[10px] text-slate-400">{club.category}</div>
+                          <div className="text-xs font-bold text-ink truncate">{club.name}</div>
+                          <div className="text-[10px] text-ink-light">{club.category}</div>
                         </div>
                       </Link>
                     ))}
@@ -366,14 +364,13 @@ export const StudentDashboardPage: React.FC = () => {
             {/* MY CLUBS TAB */}
             {activeTab === 'clubs' && (
               <div className="space-y-4">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                  <h2 className="text-lg font-bold text-white">Joined Campus Chapters</h2>
+                <div className="flex items-center justify-between pb-2 border-b border-border">
+                  <h2 className="font-display text-2xl text-ink">Joined Campus Chapters</h2>
                   <Link
                     to="/clubs"
-                    className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1"
+                    className="text-xs text-ink font-semibold flex items-center gap-1"
                   >
-                    <span>Discover More Clubs</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>Discover More Clubs &rarr;</span>
                   </Link>
                 </div>
 
@@ -382,38 +379,37 @@ export const StudentDashboardPage: React.FC = () => {
                     {joinedClubs.map((club) => (
                       <div
                         key={club._id}
-                        className="p-5 rounded-2xl bg-tech-surface border border-slate-800 flex flex-col justify-between space-y-4"
+                        className="p-5 rounded-card bg-white border border-border shadow-subtle flex flex-col justify-between space-y-4"
                       >
                         <div className="flex items-start gap-3.5">
                           <img
                             src={club.logoUrl}
                             alt={club.name}
-                            className="w-12 h-12 rounded-xl object-cover border border-slate-700 bg-slate-900"
+                            className="w-12 h-12 rounded-xl object-cover border border-border"
                           />
                           <div>
-                            <span className="text-[10px] font-bold uppercase text-indigo-400 tracking-wider">
+                            <span className="text-[10px] font-bold uppercase text-ink-light tracking-wider">
                               {club.category}
                             </span>
-                            <h3 className="text-sm font-bold text-white mt-0.5">{club.name}</h3>
-                            <p className="text-xs text-slate-400 line-clamp-2 mt-1">
+                            <h3 className="text-sm font-bold text-ink mt-0.5">{club.name}</h3>
+                            <p className="text-xs text-ink-light line-clamp-2 mt-1">
                               {club.description}
                             </p>
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
+                        <div className="flex items-center justify-between pt-2 border-t border-border-light text-xs">
                           <Link
                             to={`/clubs/${club.slug || club._id}`}
-                            className="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1"
+                            className="text-ink font-semibold flex items-center gap-1"
                           >
-                            <span>View Chapter</span>
-                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span>View Chapter &rarr;</span>
                           </Link>
 
                           <button
                             type="button"
                             onClick={() => handleLeaveClub(club._id, club.name)}
-                            className="text-rose-400 hover:text-rose-300 font-semibold text-xs flex items-center gap-1 transition-colors"
+                            className="text-red-600 hover:text-red-700 font-semibold text-xs flex items-center gap-1 transition-colors"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                             <span>Leave Club</span>
@@ -423,15 +419,15 @@ export const StudentDashboardPage: React.FC = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="p-12 rounded-2xl bg-tech-surface border border-slate-800 text-center space-y-3">
-                    <Users className="w-8 h-8 text-slate-500 mx-auto" />
-                    <h3 className="text-sm font-bold text-white">No Clubs Joined Yet</h3>
-                    <p className="text-xs text-slate-400">
+                  <div className="p-12 rounded-card bg-white border border-border shadow-subtle text-center space-y-3">
+                    <Users className="w-8 h-8 text-ink-faint mx-auto" />
+                    <h3 className="text-sm font-bold text-ink">No Clubs Joined Yet</h3>
+                    <p className="text-xs text-ink-light">
                       Join competitive coding chapters, robotics teams, or web societies to collaborate on campus.
                     </p>
                     <Link
                       to="/clubs"
-                      className="inline-flex items-center gap-1 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold"
+                      className="inline-flex items-center gap-1 px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-ink text-xs font-semibold"
                     >
                       Browse Chapters
                     </Link>
@@ -443,14 +439,13 @@ export const StudentDashboardPage: React.FC = () => {
             {/* MY EVENTS TAB */}
             {activeTab === 'events' && (
               <div className="space-y-4">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                  <h2 className="text-lg font-bold text-white">My Registered Event Passes</h2>
+                <div className="flex items-center justify-between pb-2 border-b border-border">
+                  <h2 className="font-display text-2xl text-ink">My Registered Event Passes</h2>
                   <Link
                     to="/events"
-                    className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1"
+                    className="text-xs text-ink font-semibold flex items-center gap-1"
                   >
-                    <span>Browse All Events</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>Browse All Events &rarr;</span>
                   </Link>
                 </div>
 
@@ -459,29 +454,29 @@ export const StudentDashboardPage: React.FC = () => {
                     {registeredEventsList.map(({ event, regId, date }) => (
                       <div
                         key={regId}
-                        className="p-5 rounded-2xl bg-tech-surface border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                        className="p-5 rounded-card bg-white border border-border shadow-subtle flex flex-col md:flex-row md:items-center justify-between gap-4"
                       >
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
-                            <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                            <span className="px-2 py-0.5 rounded-pill text-[10px] font-bold uppercase tracking-wider bg-cream text-ink border border-border">
                               {event.category}
                             </span>
-                            <span className="text-xs font-mono text-cyan-400 font-semibold">
+                            <span className="text-xs font-mono text-ink-light font-semibold">
                               Pass ID: {regId}
                             </span>
                           </div>
-                          <h3 className="text-base font-bold text-white">{event.title}</h3>
-                          <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
-                            <span className="flex items-center gap-1 text-slate-300">
-                              <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+                          <h3 className="text-base font-bold text-ink">{event.title}</h3>
+                          <div className="flex flex-wrap items-center gap-4 text-xs text-ink-light">
+                            <span className="flex items-center gap-1 text-ink-light">
+                              <Calendar className="w-3.5 h-3.5" />
                               {event.date}
                             </span>
                             <span className="flex items-center gap-1">
-                              <Clock className="w-3.5 h-3.5 text-purple-400" />
+                              <Clock className="w-3.5 h-3.5" />
                               {event.startTime}
                             </span>
                             <span className="flex items-center gap-1">
-                              <MapPin className="w-3.5 h-3.5 text-blue-400" />
+                              <MapPin className="w-3.5 h-3.5" />
                               {event.venue}
                             </span>
                           </div>
@@ -491,16 +486,16 @@ export const StudentDashboardPage: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => openDigitalPass(regId, event)}
-                            className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-sm transition-colors"
+                            className="px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-ink font-semibold text-xs flex items-center gap-1.5 shadow-subtle transition-colors"
                           >
-                            <QrCode className="w-3.5 h-3.5 text-cyan-300" />
+                            <QrCode className="w-3.5 h-3.5" />
                             <span>Digital Pass</span>
                           </button>
 
                           <button
                             type="button"
                             onClick={() => handleCancelRegistration(event._id, event.title)}
-                            className="p-2 rounded-xl bg-slate-800 hover:bg-rose-950/80 hover:text-rose-400 text-slate-400 border border-slate-700 transition-colors"
+                            className="p-3 rounded-full bg-cream hover:bg-red-50 hover:text-red-600 text-ink-light border border-border transition-colors"
                             title="Cancel Reservation"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -510,15 +505,15 @@ export const StudentDashboardPage: React.FC = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="p-12 rounded-2xl bg-tech-surface border border-slate-800 text-center space-y-3">
-                    <Calendar className="w-8 h-8 text-slate-500 mx-auto" />
-                    <h3 className="text-sm font-bold text-white">No Event Passes Reserved</h3>
-                    <p className="text-xs text-slate-400">
+                  <div className="p-12 rounded-card bg-white border border-border shadow-subtle text-center space-y-3">
+                    <Calendar className="w-8 h-8 text-ink-faint mx-auto" />
+                    <h3 className="text-sm font-bold text-ink">No Event Passes Reserved</h3>
+                    <p className="text-xs text-ink-light">
                       Reserve entry passes to hackathons, bootcamps, and symposiums on campus.
                     </p>
                     <Link
                       to="/events"
-                      className="inline-flex items-center gap-1 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold"
+                      className="inline-flex items-center gap-1 px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-ink text-xs font-semibold"
                     >
                       Find Events
                     </Link>
@@ -530,13 +525,13 @@ export const StudentDashboardPage: React.FC = () => {
             {/* NOTIFICATIONS TAB */}
             {activeTab === 'notifications' && (
               <div className="space-y-4">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                  <h2 className="text-lg font-bold text-white">Collegiate Notifications</h2>
+                <div className="flex items-center justify-between pb-2 border-b border-border">
+                  <h2 className="font-display text-2xl text-ink">Collegiate Notifications</h2>
                   {unreadNotifsCount > 0 && (
                     <button
                       type="button"
                       onClick={handleMarkNotificationsRead}
-                      className="text-xs text-cyan-400 hover:text-cyan-300 font-semibold"
+                      className="text-xs text-ink font-semibold"
                     >
                       Mark all as read
                     </button>
@@ -547,23 +542,23 @@ export const StudentDashboardPage: React.FC = () => {
                   {student.notifications.map((notif) => (
                     <div
                       key={notif.id}
-                      className={`p-4 rounded-xl border transition-colors ${
+                      className={`p-4 rounded-card border transition-colors ${
                         notif.read
-                          ? 'bg-tech-surface border-slate-800 text-slate-400'
-                          : 'bg-tech-surface border-indigo-500/40 text-slate-200'
+                          ? 'bg-white border-border text-ink-light'
+                          : 'bg-cream border-green text-ink'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
-                            <span className="text-xs font-bold text-white">{notif.title}</span>
+                            <span className="text-xs font-bold text-ink">{notif.title}</span>
                             {!notif.read && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-green" />
                             )}
                           </div>
-                          <p className="text-xs text-slate-300">{notif.message}</p>
+                          <p className="text-xs text-ink-light">{notif.message}</p>
                         </div>
-                        <span className="text-[10px] text-slate-500 font-mono shrink-0">
+                        <span className="text-[10px] text-ink-faint font-mono shrink-0">
                           {notif.time}
                         </span>
                       </div>
@@ -575,10 +570,10 @@ export const StudentDashboardPage: React.FC = () => {
 
             {/* PROFILE TAB */}
             {activeTab === 'profile' && (
-              <div className="rounded-2xl bg-tech-surface border border-slate-800 p-6 sm:p-8 space-y-6">
-                <div className="pb-4 border-b border-slate-800">
-                  <h2 className="text-lg font-bold text-white">Student Profile & Credentials</h2>
-                  <p className="text-xs text-slate-400 mt-0.5">
+              <div className="rounded-card bg-white border border-border shadow-subtle p-6 sm:p-8 space-y-6">
+                <div className="pb-4 border-b border-border">
+                  <h2 className="font-display text-2xl text-ink">Student Profile & Credentials</h2>
+                  <p className="text-xs text-ink-light mt-0.5">
                     Your institutional information is verified during gate check-ins and pass issuance.
                   </p>
                 </div>
@@ -586,100 +581,100 @@ export const StudentDashboardPage: React.FC = () => {
                 <form onSubmit={handleSaveProfile} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">
+                      <label className="block text-xs font-semibold text-ink-light mb-1">
                         Full Name
                       </label>
                       <input
                         type="text"
                         value={profileForm.name}
                         onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
-                        className="w-full px-3.5 py-2 rounded-lg bg-tech-card border border-slate-700 text-xs text-white focus:outline-none focus:border-indigo-500"
+                        className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">
+                      <label className="block text-xs font-semibold text-ink-light mb-1">
                         Student University ID / Roll No.
                       </label>
                       <input
                         type="text"
                         value={profileForm.studentId}
                         onChange={(e) => setProfileForm({ ...profileForm, studentId: e.target.value })}
-                        className="w-full px-3.5 py-2 rounded-lg bg-tech-card border border-slate-700 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
+                        className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green font-mono"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">
+                      <label className="block text-xs font-semibold text-ink-light mb-1">
                         Department
                       </label>
                       <input
                         type="text"
                         value={profileForm.department}
                         onChange={(e) => setProfileForm({ ...profileForm, department: e.target.value })}
-                        className="w-full px-3.5 py-2 rounded-lg bg-tech-card border border-slate-700 text-xs text-white focus:outline-none focus:border-indigo-500"
+                        className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">
+                      <label className="block text-xs font-semibold text-ink-light mb-1">
                         Academic Year
                       </label>
                       <input
                         type="text"
                         value={profileForm.academicYear}
                         onChange={(e) => setProfileForm({ ...profileForm, academicYear: e.target.value })}
-                        className="w-full px-3.5 py-2 rounded-lg bg-tech-card border border-slate-700 text-xs text-white focus:outline-none focus:border-indigo-500"
+                        className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">
+                      <label className="block text-xs font-semibold text-ink-light mb-1">
                         Contact Phone
                       </label>
                       <input
                         type="text"
                         value={profileForm.phone}
                         onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
-                        className="w-full px-3.5 py-2 rounded-lg bg-tech-card border border-slate-700 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
+                        className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green font-mono"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">
+                      <label className="block text-xs font-semibold text-ink-light mb-1">
                         Technical Interests (comma separated)
                       </label>
                       <input
                         type="text"
                         value={profileForm.interests}
                         onChange={(e) => setProfileForm({ ...profileForm, interests: e.target.value })}
-                        className="w-full px-3.5 py-2 rounded-lg bg-tech-card border border-slate-700 text-xs text-white focus:outline-none focus:border-indigo-500"
+                        className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green"
                         placeholder="Hackathons, AI/ML, WebDev"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">
+                    <label className="block text-xs font-semibold text-ink-light mb-1">
                       Bio / Summary
                     </label>
                     <textarea
                       rows={3}
                       value={profileForm.bio}
                       onChange={(e) => setProfileForm({ ...profileForm, bio: e.target.value })}
-                      className="w-full px-3.5 py-2 rounded-lg bg-tech-card border border-slate-700 text-xs text-white focus:outline-none focus:border-indigo-500"
+                      className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green"
                     />
                   </div>
 
                   <div className="pt-2 flex justify-end">
                     <button
                       type="submit"
-                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-sm transition-colors"
+                      className="px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-ink font-semibold text-xs flex items-center gap-1.5 shadow-subtle transition-colors"
                     >
                       <Save className="w-4 h-4" />
                       <span>Save Profile Changes</span>

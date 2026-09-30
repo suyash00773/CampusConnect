@@ -105,19 +105,19 @@ export const ClubFormModal: React.FC<ClubFormModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in overflow-y-auto">
-      <div className="relative w-full max-w-xl my-8 rounded-xl bg-tech-surface border border-slate-800 shadow-xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/40 backdrop-blur-sm animate-fade-in overflow-y-auto">
+      <div className="relative w-full max-w-xl my-8 rounded-2xl bg-white border border-border shadow-modal overflow-hidden">
         {/* Header */}
-        <div className="p-5 bg-tech-bg border-b border-slate-800 flex items-center justify-between">
+        <div className="p-6 bg-cream border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-              <Users className="w-4 h-4" />
+            <div className="w-10 h-10 rounded-xl bg-green-light border border-green/20 flex items-center justify-center text-green">
+              <Users className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white leading-tight">
+              <h3 className="text-lg font-bold text-ink leading-tight font-display">
                 {clubToEdit ? 'Edit Club Profile' : 'Register New Campus Club'}
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-sm text-ink-light">
                 Manage student societies, clubs, and interest guilds.
               </p>
             </div>
@@ -125,45 +125,45 @@ export const ClubFormModal: React.FC<ClubFormModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700 cursor-pointer"
+            className="p-2 rounded-full text-ink-light hover:text-ink bg-white hover:bg-sand border border-border cursor-pointer transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
+        <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[75vh] overflow-y-auto bg-white">
           {error && (
-            <div className="p-3.5 rounded-lg bg-rose-950/40 border border-rose-800/40 text-rose-300 text-xs flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0" />
-              <span>{error}</span>
+            <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2">
+              <AlertCircle className="w-5 h-5 shrink-0 text-red-600" />
+              <span className="font-medium">{error}</span>
             </div>
           )}
 
           {/* Club Name */}
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Club / Society Name <span className="text-rose-400">*</span>
+            <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+              Club / Society Name <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Artificial Intelligence Research Guild"
-              className="w-full px-3.5 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+              className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink placeholder-ink-faint focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
               required
             />
           </div>
 
           {/* Category */}
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Category <span className="text-rose-400">*</span>
+            <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+              Category <span className="text-red-600">*</span>
             </label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500 cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green cursor-pointer transition-colors"
             >
               {CLUB_CATEGORIES.map((cat) => (
                 <option key={cat} value={cat}>
@@ -175,15 +175,15 @@ export const ClubFormModal: React.FC<ClubFormModalProps> = ({
 
           {/* Description */}
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Description <span className="text-rose-400">*</span>
+            <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+              Description <span className="text-red-600">*</span>
             </label>
             <textarea
               rows={3}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Mission, typical activities, target members..."
-              className="w-full px-3.5 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink placeholder-ink-faint focus:outline-none focus:border-green focus:ring-1 focus:ring-green resize-none transition-colors"
               required
             />
           </div>
@@ -191,29 +191,29 @@ export const ClubFormModal: React.FC<ClubFormModalProps> = ({
           {/* Lead Coordinator Info */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Lead Coordinator <span className="text-rose-400">*</span>
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+                Lead Coordinator <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
                 value={leadName}
                 onChange={(e) => setLeadName(e.target.value)}
                 placeholder="e.g. Devika Nair"
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Lead Email <span className="text-rose-400">*</span>
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
+                Lead Email <span className="text-red-600">*</span>
               </label>
               <input
                 type="email"
                 value={leadEmail}
                 onChange={(e) => setLeadEmail(e.target.value)}
                 placeholder="lead@campusconnect.edu"
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
                 required
               />
             </div>
@@ -222,7 +222,7 @@ export const ClubFormModal: React.FC<ClubFormModalProps> = ({
           {/* Member Count & Media */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
                 Active Members
               </label>
               <input
@@ -230,12 +230,12 @@ export const ClubFormModal: React.FC<ClubFormModalProps> = ({
                 min={0}
                 value={memberCount}
                 onChange={(e) => setMemberCount(Number(e.target.value))}
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
               />
             </div>
 
             <div className="sm:col-span-2">
-              <label className="block text-xs font-medium text-slate-300 mb-1">
+              <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
                 Logo Image URL
               </label>
               <input
@@ -243,13 +243,13 @@ export const ClubFormModal: React.FC<ClubFormModalProps> = ({
                 value={logoUrl}
                 onChange={(e) => setLogoUrl(e.target.value)}
                 placeholder="https://..."
-                className="w-full px-3 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
+            <label className="block text-xs font-semibold text-ink uppercase tracking-wider mb-1.5">
               Banner Image URL
             </label>
             <input
@@ -257,38 +257,38 @@ export const ClubFormModal: React.FC<ClubFormModalProps> = ({
               value={bannerUrl}
               onChange={(e) => setBannerUrl(e.target.value)}
               placeholder="https://..."
-              className="w-full px-3.5 py-2 rounded-lg bg-tech-bg border border-slate-700/80 text-xs text-white focus:outline-none focus:border-indigo-500"
+              className="w-full px-4 py-3 rounded-xl bg-ivory border border-border text-sm text-ink focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
             />
           </div>
 
           {/* Featured Checkbox */}
-          <div className="p-3.5 rounded-lg bg-tech-bg border border-slate-800 flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-300">
+          <div className="p-4 rounded-xl bg-cream border border-border flex items-center justify-between mt-2">
+            <span className="text-sm font-semibold text-ink">
               Feature on Homepage & Spotlight
             </span>
             <input
               type="checkbox"
               checked={isFeatured}
               onChange={(e) => setIsFeatured(e.target.checked)}
-              className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 bg-slate-900 border-slate-700 cursor-pointer"
+              className="w-5 h-5 rounded text-green focus:ring-green bg-white border-border cursor-pointer"
             />
           </div>
 
           {/* Actions */}
-          <div className="pt-4 flex items-center justify-end gap-2.5 border-t border-slate-800">
+          <div className="pt-4 flex items-center justify-end gap-3 border-t border-border mt-4">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer"
+              className="px-6 py-3 rounded-pill text-sm font-semibold bg-cream hover:bg-sand text-ink border border-border transition-colors cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white shadow-sm flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer"
+              className="px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-sm font-semibold text-ink shadow-sm flex items-center gap-2 transition-colors disabled:opacity-50 cursor-pointer"
             >
-              <Save className="w-3.5 h-3.5" />
+              <Save className="w-4 h-4" />
               <span>{isSubmitting ? 'Saving...' : clubToEdit ? 'Update Club' : 'Create Club'}</span>
             </button>
           </div>

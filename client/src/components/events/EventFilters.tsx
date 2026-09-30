@@ -39,26 +39,26 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
   const isFiltered = search || category !== 'All' || timeframe !== 'all' || sort !== 'date-asc';
 
   return (
-    <div className="space-y-3.5 bg-tech-surface p-4 rounded-xl border border-slate-800">
+    <div className="space-y-3.5 bg-cream p-4 rounded-2xl border border-border">
       {/* Top Controls: Search, Timeframe, Sort */}
       <div className="flex flex-col md:flex-row gap-2.5 items-stretch md:items-center justify-between">
         {/* Search Input */}
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-light" />
           <input
             type="text"
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search by title, topics, venue or tags..."
-            className="w-full pl-9 pr-8 py-2 rounded-lg bg-tech-card border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+            className="w-full pl-9 pr-8 py-3 rounded-xl bg-ivory border border-border text-sm text-ink placeholder-ink-faint focus:outline-none focus:border-green focus:ring-1 focus:ring-green"
           />
           {search && (
             <button
               onClick={() => onSearchChange('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-ink-light hover:text-ink"
               aria-label="Clear search query"
             >
-              <X className="w-3.5 h-3.5" />
+              <X className="w-4 h-4" />
             </button>
           )}
         </div>
@@ -66,33 +66,33 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
         {/* Timeframe & Sort Selectors */}
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
           {/* Segmented Timeframe Control */}
-          <div className="flex items-center rounded-lg bg-tech-card border border-slate-700/80 p-0.5 text-xs">
+          <div className="flex items-center rounded-xl bg-ivory border border-border p-1 text-sm">
             <button
               onClick={() => onTimeframeChange('upcoming')}
-              className={`px-3 py-1.5 rounded-md font-medium transition-colors ${
+              className={`px-4 py-1.5 rounded-pill font-medium transition-colors ${
                 timeframe === 'upcoming'
-                  ? 'bg-slate-800 text-white font-semibold'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-ink text-ivory font-semibold'
+                  : 'text-ink-light hover:text-ink'
               }`}
             >
               Upcoming
             </button>
             <button
               onClick={() => onTimeframeChange('past')}
-              className={`px-3 py-1.5 rounded-md font-medium transition-colors ${
+              className={`px-4 py-1.5 rounded-pill font-medium transition-colors ${
                 timeframe === 'past'
-                  ? 'bg-slate-800 text-white font-semibold'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-ink text-ivory font-semibold'
+                  : 'text-ink-light hover:text-ink'
               }`}
             >
               Past
             </button>
             <button
               onClick={() => onTimeframeChange('all')}
-              className={`px-3 py-1.5 rounded-md font-medium transition-colors ${
+              className={`px-4 py-1.5 rounded-pill font-medium transition-colors ${
                 timeframe === 'all'
-                  ? 'bg-slate-800 text-white font-semibold'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-ink text-ivory font-semibold'
+                  : 'text-ink-light hover:text-ink'
               }`}
             >
               All
@@ -103,7 +103,7 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
           <select
             value={sort}
             onChange={(e) => onSortChange(e.target.value)}
-            className="px-2.5 py-1.5 rounded-lg bg-tech-card border border-slate-700/80 text-xs font-medium text-slate-300 focus:outline-none focus:border-indigo-500 cursor-pointer"
+            className="px-3 py-2.5 rounded-xl bg-ivory border border-border text-sm font-medium text-ink focus:outline-none focus:border-green cursor-pointer"
           >
             <option value="date-asc">Date: Earliest First</option>
             <option value="date-desc">Date: Latest First</option>
@@ -115,9 +115,9 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
           {isFiltered && (
             <button
               onClick={onReset}
-              className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-750 text-xs font-medium text-slate-300 transition-colors flex items-center gap-1"
+              className="px-3 py-2.5 rounded-xl bg-cream hover:bg-sand text-sm font-medium text-ink border border-border transition-colors flex items-center gap-1"
             >
-              <X className="w-3.5 h-3.5" />
+              <X className="w-4 h-4" />
               <span>Reset</span>
             </button>
           )}
@@ -125,19 +125,19 @@ export const EventFilters: React.FC<EventFiltersProps> = ({
       </div>
 
       {/* Category Filter Pills */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pt-1 no-scrollbar">
-        <span className="text-[11px] font-semibold text-slate-500 flex items-center gap-1 shrink-0 mr-1 uppercase tracking-wider">
-          <SlidersHorizontal className="w-3 h-3 text-slate-400" />
+      <div className="flex items-center gap-2 overflow-x-auto pt-2 pb-1 no-scrollbar">
+        <span className="text-[11px] font-semibold text-ink-light flex items-center gap-1 shrink-0 mr-1 uppercase tracking-wider">
+          <SlidersHorizontal className="w-3.5 h-3.5 text-ink-faint" />
           Filter:
         </span>
         {CATEGORIES.map((cat) => (
           <button
             key={cat}
             onClick={() => onCategoryChange(cat)}
-            className={`px-3 py-1 rounded-md text-xs font-medium shrink-0 transition-colors ${
+            className={`px-4 py-1.5 rounded-pill text-xs shrink-0 transition-colors ${
               category === cat
-                ? 'bg-indigo-600 text-white font-semibold shadow-sm'
-                : 'bg-tech-card text-slate-400 hover:text-white border border-slate-800'
+                ? 'bg-green text-ink font-semibold'
+                : 'bg-ivory text-ink-light hover:text-ink border border-border'
             }`}
           >
             {cat}

@@ -111,17 +111,17 @@ export const AdminRegistrationsPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-6 animate-fade-in bg-ivory min-h-screen">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400">
+          <span className="text-xs font-semibold uppercase tracking-wider text-green">
             Attendee Management
           </span>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-0.5">
+          <h1 className="font-display text-3xl text-ink tracking-tight mt-0.5">
             Student Registrations
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-ink-light mt-1">
             Search, verify student registrations, filter by event, and download CSV rosters for check-in.
           </p>
         </div>
@@ -129,7 +129,7 @@ export const AdminRegistrationsPage: React.FC = () => {
         <button
           onClick={handleExportCsv}
           disabled={isExporting}
-          className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-medium text-white flex items-center justify-center gap-2 transition-colors cursor-pointer self-start sm:self-auto disabled:opacity-50"
+          className="px-6 py-3 rounded-pill bg-green hover:bg-green-hover text-xs font-semibold text-ink flex items-center justify-center gap-2 transition-colors cursor-pointer self-start sm:self-auto disabled:opacity-50"
         >
           <Download className="w-4 h-4" />
           <span>{isExporting ? 'Generating CSV...' : 'Export to CSV'}</span>
@@ -137,28 +137,28 @@ export const AdminRegistrationsPage: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="p-3.5 rounded-xl bg-tech-surface border border-slate-800 space-y-3">
+      <div className="p-4 rounded-card bg-white border border-border shadow-subtle space-y-3">
         <form onSubmit={handleSearchSubmit} className="flex flex-col md:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-light" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by student name, email, college, phone, or ID (e.g. CC-2026)..."
-              className="w-full pl-10 pr-4 py-2 rounded-lg bg-tech-card border border-slate-700/80 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+              className="w-full pl-10 pr-4 py-3 rounded-xl bg-ivory border border-border text-xs text-ink placeholder-ink-faint focus:outline-none focus:border-green focus:ring-1 focus:ring-green transition-colors"
             />
           </div>
         </form>
 
-        <div className="flex flex-wrap items-center gap-3 pt-1 border-t border-slate-800/80">
+        <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-border-light">
           {/* Event Filter */}
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-medium text-slate-400">Event:</span>
+            <span className="text-[11px] font-medium text-ink-light">Event:</span>
             <select
               value={selectedEventId}
               onChange={(e) => setSelectedEventId(e.target.value)}
-              className="px-3 py-1.5 rounded-lg bg-tech-card border border-slate-700/80 text-xs text-slate-200 focus:outline-none focus:border-indigo-500 cursor-pointer max-w-xs"
+              className="px-4 py-2 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green cursor-pointer max-w-xs"
             >
               <option value="All">All Events ({events.length})</option>
               {events.map((ev) => (
@@ -171,11 +171,11 @@ export const AdminRegistrationsPage: React.FC = () => {
 
           {/* Academic Year Filter */}
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-medium text-slate-400">Year:</span>
+            <span className="text-[11px] font-medium text-ink-light">Year:</span>
             <select
               value={academicYearFilter}
               onChange={(e) => setAcademicYearFilter(e.target.value)}
-              className="px-3 py-1.5 rounded-lg bg-tech-card border border-slate-700/80 text-xs text-slate-200 focus:outline-none focus:border-indigo-500 cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green cursor-pointer"
             >
               <option value="All">All Years</option>
               <option value="1st Year">1st Year</option>
@@ -189,11 +189,11 @@ export const AdminRegistrationsPage: React.FC = () => {
 
           {/* Status Filter */}
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-medium text-slate-400">Status:</span>
+            <span className="text-[11px] font-medium text-ink-light">Status:</span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 py-1.5 rounded-lg bg-tech-card border border-slate-700/80 text-xs text-slate-200 focus:outline-none focus:border-indigo-500 cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-ivory border border-border text-xs text-ink focus:outline-none focus:border-green cursor-pointer"
             >
               <option value="All">All Statuses</option>
               <option value="Confirmed">Confirmed</option>
@@ -208,79 +208,79 @@ export const AdminRegistrationsPage: React.FC = () => {
       {loading ? (
         <Loader label="Loading registrations..." size="lg" />
       ) : registrations.length > 0 ? (
-        <div className="rounded-xl bg-tech-surface border border-slate-800 overflow-hidden shadow-sm">
+        <div className="rounded-card bg-white border border-border overflow-hidden shadow-subtle">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-xs bg-white">
               <thead>
-                <tr className="bg-tech-card/80 border-b border-slate-800 text-slate-400 font-medium uppercase tracking-wider text-[11px]">
-                  <th className="py-3 pl-6">Registration ID</th>
-                  <th className="py-3 px-4">Attendee Name</th>
-                  <th className="py-3 px-4">Email</th>
-                  <th className="py-3 px-4">Event</th>
-                  <th className="py-3 px-4">College</th>
-                  <th className="py-3 px-4">Year</th>
-                  <th className="py-3 px-4">Status</th>
-                  <th className="py-3 pr-6 text-right">Actions</th>
+                <tr className="bg-cream border-b border-border-light text-ink-light font-medium uppercase tracking-wider text-[11px]">
+                  <th className="py-4 pl-6">Registration ID</th>
+                  <th className="py-4 px-4">Attendee Name</th>
+                  <th className="py-4 px-4">Email</th>
+                  <th className="py-4 px-4">Event</th>
+                  <th className="py-4 px-4">College</th>
+                  <th className="py-4 px-4">Year</th>
+                  <th className="py-4 px-4">Status</th>
+                  <th className="py-4 pr-6 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-border-light">
                 {registrations.map((reg) => {
                   const eventTitle =
                     typeof reg.event === 'object' ? reg.event.title : 'Campus Event';
 
                   return (
-                    <tr key={reg._id} className="hover:bg-slate-800/30 transition-colors">
+                    <tr key={reg._id} className="hover:bg-cream/50 transition-colors">
                       {/* ID */}
-                      <td className="py-3 pl-6 font-mono font-medium text-indigo-300">
+                      <td className="py-4 pl-6 font-mono font-medium text-green">
                         {reg.registrationId}
                       </td>
 
                       {/* Name */}
-                      <td className="py-3 px-4 font-medium text-white">
+                      <td className="py-4 px-4 font-medium text-ink">
                         {reg.fullName}
                       </td>
 
                       {/* Email */}
-                      <td className="py-3 px-4 text-slate-300 font-mono text-[11px]">
+                      <td className="py-4 px-4 text-ink-light font-mono text-[11px]">
                         {reg.email}
                       </td>
 
                       {/* Event */}
-                      <td className="py-3 px-4 text-slate-300 max-w-[200px] truncate">
+                      <td className="py-4 px-4 text-ink-light max-w-[200px] truncate">
                         {eventTitle}
                       </td>
 
                       {/* College */}
-                      <td className="py-3 px-4 text-slate-400 max-w-[150px] truncate">
+                      <td className="py-4 px-4 text-ink-light max-w-[150px] truncate">
                         {reg.college}
                       </td>
 
                       {/* Academic Year */}
-                      <td className="py-3 px-4">
-                        <span className="px-1.5 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300 font-medium border border-slate-700">
+                      <td className="py-4 px-4">
+                        <span className="px-2 py-1 rounded bg-cream text-[10px] text-ink font-medium border border-border-light">
                           {reg.academicYear}
                         </span>
                       </td>
 
                       {/* Status */}
-                      <td className="py-3 px-4">
+                      <td className="py-4 px-4">
                         <Badge label={reg.status} variant="status" status={reg.status as any} />
                       </td>
 
                       {/* Actions */}
-                      <td className="py-3 pr-6 text-right">
+                      <td className="py-4 pr-6 text-right">
                         <div className="flex items-center justify-end gap-1.5">
                           <button
                             onClick={() => setActiveRegDetail(reg)}
                             title="View full registration details"
-                            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                            className="p-2 rounded-pill bg-cream hover:bg-sand text-ink transition-colors cursor-pointer"
                           >
                             <Eye className="w-3.5 h-3.5" />
                           </button>
                           <button
                             onClick={() => handleOpenDelete(reg)}
                             title="Cancel registration"
-                            className="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-900/60 text-slate-400 hover:text-rose-300 transition-colors cursor-pointer"
+                            className="p-2 rounded-pill bg-cream hover:bg-red-50 text-ink hover:text-red-700 transition-colors cursor-pointer"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
@@ -294,10 +294,10 @@ export const AdminRegistrationsPage: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="text-center py-16 rounded-xl bg-tech-surface border border-slate-800 space-y-3">
-          <ClipboardList className="w-8 h-8 text-slate-500 mx-auto" />
-          <h3 className="text-sm font-semibold text-white">No registrations found</h3>
-          <p className="text-xs text-slate-400">
+        <div className="text-center py-16 rounded-card bg-white border border-border shadow-subtle space-y-3">
+          <ClipboardList className="w-8 h-8 text-ink-faint mx-auto" />
+          <h3 className="text-sm font-semibold text-ink">No registrations found</h3>
+          <p className="text-xs text-ink-light">
             Try adjusting your search query, selecting another event, or clearing filters.
           </p>
         </div>
@@ -305,35 +305,35 @@ export const AdminRegistrationsPage: React.FC = () => {
 
       {/* Details View Modal */}
       {activeRegDetail && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-lg rounded-xl bg-tech-surface border border-slate-800 p-6 shadow-xl space-y-5">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/40 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-lg rounded-2xl bg-white border border-border p-6 shadow-card space-y-5">
+            <div className="flex items-center justify-between border-b border-border pb-4">
               <div>
-                <span className="text-[10px] uppercase font-semibold text-indigo-400">
+                <span className="text-[10px] uppercase font-semibold text-green">
                   Registration Record
                 </span>
-                <h3 className="text-base font-bold text-white font-mono">
+                <h3 className="text-base font-bold text-ink font-mono">
                   {activeRegDetail.registrationId}
                 </h3>
               </div>
               <button
                 onClick={() => setActiveRegDetail(null)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white bg-slate-800 transition-colors cursor-pointer"
+                className="p-2 rounded-pill text-ink-light hover:text-ink bg-cream hover:bg-sand transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             <div className="space-y-3 text-xs">
-              <div className="grid grid-cols-2 gap-3 p-3.5 rounded-lg bg-tech-card border border-slate-800">
+              <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-ivory border border-border-light">
                 <div>
-                  <span className="text-slate-500 font-medium">Full Name</span>
-                  <div className="text-white font-semibold text-sm mt-0.5">
+                  <span className="text-ink-light font-medium">Full Name</span>
+                  <div className="text-ink font-semibold text-sm mt-0.5">
                     {activeRegDetail.fullName}
                   </div>
                 </div>
                 <div>
-                  <span className="text-slate-500 font-medium">Status</span>
+                  <span className="text-ink-light font-medium">Status</span>
                   <div className="mt-0.5">
                     <Badge
                       label={activeRegDetail.status}
@@ -344,33 +344,33 @@ export const AdminRegistrationsPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="space-y-2 p-3.5 rounded-lg bg-tech-card border border-slate-800">
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+              <div className="space-y-2 p-4 rounded-xl bg-ivory border border-border-light">
+                <div className="flex items-center gap-2 text-ink-light">
+                  <Mail className="w-3.5 h-3.5 text-ink-light shrink-0" />
                   <span>{activeRegDetail.email}</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Phone className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <div className="flex items-center gap-2 text-ink-light">
+                  <Phone className="w-3.5 h-3.5 text-ink-light shrink-0" />
                   <span>{activeRegDetail.phone}</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Building2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <div className="flex items-center gap-2 text-ink-light">
+                  <Building2 className="w-3.5 h-3.5 text-ink-light shrink-0" />
                   <span>{activeRegDetail.college}</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <div className="flex items-center gap-2 text-ink-light">
+                  <Calendar className="w-3.5 h-3.5 text-ink-light shrink-0" />
                   <span>Academic Year: {activeRegDetail.academicYear}</span>
                 </div>
               </div>
 
               {activeRegDetail.notes && (
-                <div className="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60">
-                  <span className="text-slate-400 font-medium block mb-1">Student Notes:</span>
-                  <p className="text-slate-200">{activeRegDetail.notes}</p>
+                <div className="p-4 rounded-xl bg-cream border border-border-light">
+                  <span className="text-ink-light font-medium block mb-1">Student Notes:</span>
+                  <p className="text-ink">{activeRegDetail.notes}</p>
                 </div>
               )}
 
-              <div className="text-[11px] text-slate-500">
+              <div className="text-[11px] text-ink-faint">
                 Registered On: {new Date(activeRegDetail.registeredAt).toLocaleString()}
               </div>
             </div>
@@ -378,7 +378,7 @@ export const AdminRegistrationsPage: React.FC = () => {
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setActiveRegDetail(null)}
-                className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 cursor-pointer"
+                className="px-6 py-2 rounded-pill bg-cream hover:bg-sand text-xs font-medium text-ink border border-border cursor-pointer"
               >
                 Close
               </button>

@@ -7,43 +7,46 @@ export default {
   theme: {
     extend: {
       colors: {
-        tech: {
-          bg: '#050B18',
-          surface: '#0B1530',
-          card: '#101D3A',
-          elevated: '#142344',
-          blue: '#2563EB',
-          purple: '#8B5CF6',
-          cyan: '#22D3EE',
-          pink: '#F472B6',
-          text: '#F8FAFC',
-          muted: '#94A3B8',
-          border: 'rgba(148, 163, 184, 0.16)',
+        ivory: '#FCFAF4',
+        cream: '#F7EEDB',
+        sand: '#EDE5D0',
+        ink: '#20201D',
+        'ink-light': '#6B6B66',
+        'ink-faint': '#9B9B96',
+        green: {
+          DEFAULT: '#30D565',
+          hover: '#28C05A',
+          light: '#E8F9EE',
         },
+        border: '#E5DFD0',
+        'border-light': '#EFEBE0',
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['DM Sans', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        display: ['DM Serif Display', 'Georgia', 'Times New Roman', 'serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       borderRadius: {
-        'sm': '4px',
-        'md': '6px',
-        'lg': '8px',
-        'xl': '12px',
-        '2xl': '16px',
+        'pill': '9999px',
+        'card': '16px',
+        'section': '40px',
       },
       boxShadow: {
-        'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.25), 0 1px 2px -1px rgba(0, 0, 0, 0.25)',
-        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3)',
-        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4)',
-        'modal': '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+        'subtle': '0 1px 3px 0 rgba(32, 32, 29, 0.06)',
+        'card': '0 2px 8px 0 rgba(32, 32, 29, 0.08)',
+        'card-hover': '0 8px 24px 0 rgba(32, 32, 29, 0.12)',
+        'modal': '0 25px 50px -12px rgba(32, 32, 29, 0.25)',
+      },
+      fontSize: {
+        'hero': ['clamp(3rem, 6vw, 5.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+        'section': ['clamp(2rem, 4vw, 3.5rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
       },
       animation: {
-        'fade-in': 'fadeIn 0.2s ease-out forwards',
+        'fade-in': 'fadeIn 0.3s ease-out forwards',
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(4px)' },
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         }
       }

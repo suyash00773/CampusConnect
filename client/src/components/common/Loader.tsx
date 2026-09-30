@@ -15,25 +15,25 @@ export const Loader: React.FC<LoaderProps> = ({ label = 'Loading...', size = 'md
   return (
     <div className="flex flex-col items-center justify-center py-12 gap-4">
       <div
-        className={`${sizeClasses[size]} rounded-full border-purple-500/20 border-t-purple-500 animate-spin`}
+        className={`${sizeClasses[size]} rounded-full border-green/20 border-t-green animate-spin`}
       />
-      {label && <p className="text-sm font-medium text-slate-400 animate-pulse">{label}</p>}
+      {label && <p className="text-sm font-medium text-ink-light">{label}</p>}
     </div>
   );
 };
 
 export const CardSkeleton: React.FC = () => {
   return (
-    <div className="rounded-lg bg-tech-surface border border-slate-800 p-4 space-y-4 animate-pulse">
-      <div className="h-48 w-full bg-slate-800/60 rounded-lg" />
+    <div className="rounded-card bg-cream border border-border-light p-5 space-y-4 animate-pulse">
+      <div className="h-48 w-full bg-sand rounded-card" />
       <div className="space-y-2">
-        <div className="h-4 w-1/4 bg-slate-800 rounded" />
-        <div className="h-6 w-3/4 bg-slate-800 rounded" />
-        <div className="h-4 w-full bg-slate-800/50 rounded" />
+        <div className="h-4 w-1/4 bg-sand rounded" />
+        <div className="h-6 w-3/4 bg-sand rounded" />
+        <div className="h-4 w-full bg-sand rounded" />
       </div>
       <div className="pt-2 flex justify-between items-center">
-        <div className="h-4 w-1/3 bg-slate-800 rounded" />
-        <div className="h-8 w-24 bg-slate-800 rounded-lg" />
+        <div className="h-4 w-1/3 bg-sand rounded" />
+        <div className="h-8 w-24 bg-sand rounded-pill" />
       </div>
     </div>
   );

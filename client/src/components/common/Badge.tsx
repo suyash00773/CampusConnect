@@ -15,26 +15,26 @@ export const Badge: React.FC<BadgeProps> = ({
   className = '',
 }) => {
   if (variant === 'status') {
-    let colorClass = 'bg-slate-800 text-slate-300 border-slate-700';
-    let dotColor = 'bg-slate-400';
+    let colorClass = 'bg-cream text-ink border-border';
+    let dotColor = 'bg-ink-light';
 
     if (status === 'published' || status === 'Confirmed') {
-      colorClass = 'bg-emerald-950/70 text-emerald-300 border-emerald-800/80';
-      dotColor = 'bg-emerald-400';
+      colorClass = 'bg-green-light text-green border-green/20';
+      dotColor = 'bg-green';
     } else if (status === 'draft' || status === 'Waitlisted') {
-      colorClass = 'bg-amber-950/70 text-amber-300 border-amber-800/80';
-      dotColor = 'bg-amber-400';
+      colorClass = 'bg-amber-50 text-amber-700 border-amber-200';
+      dotColor = 'bg-amber-500';
     } else if (status === 'cancelled') {
-      colorClass = 'bg-rose-950/70 text-rose-300 border-rose-800/80';
-      dotColor = 'bg-rose-400';
+      colorClass = 'bg-red-50 text-red-700 border-red-200';
+      dotColor = 'bg-red-500';
     } else if (status === 'completed') {
-      colorClass = 'bg-slate-800/80 text-slate-400 border-slate-700';
-      dotColor = 'bg-slate-500';
+      colorClass = 'bg-cream text-ink-light border-border';
+      dotColor = 'bg-ink-faint';
     }
 
     return (
       <span
-        className={`inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold border ${colorClass} ${className}`}
+        className={`inline-flex items-center px-2 py-0.5 rounded-pill text-[11px] font-semibold border ${colorClass} ${className}`}
       >
         <span className={`w-1.5 h-1.5 rounded-full ${dotColor} mr-1.5 shrink-0`} />
         {label}
@@ -42,11 +42,11 @@ export const Badge: React.FC<BadgeProps> = ({
     );
   }
 
-  const categoryStyles = getCategoryStyles(label);
-
+  // Assuming getCategoryStyles gives bg colors which we might ignore or override. 
+  // For editorial, category badges are bg-cream text-ink.
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold border ${categoryStyles.bg} ${className}`}
+      className={`inline-flex items-center px-3 py-1 rounded-pill text-[11px] font-semibold border bg-cream text-ink border-border ${className}`}
     >
       {label}
     </span>
