@@ -408,11 +408,11 @@ export const HomePage: React.FC = () => {
       <section className="bg-cream pb-16 lg:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-card bg-ivory border border-border p-12 lg:p-20 text-center">
-            <div className="inline-flex items-center justify-center p-4 rounded-full bg-cream mb-8 border border-border">
+            <div className="h-16 w-16 rounded-2xl bg-ink flex items-center justify-center overflow-hidden mx-auto mb-8">
               <img
                 src="/abes-logo.png"
                 alt="ABES Engineering College"
-                className="h-12 w-auto object-contain"
+                className="h-14 w-auto object-contain object-left"
               />
             </div>
             <h2 className="font-display text-section text-ink leading-tight mb-6">

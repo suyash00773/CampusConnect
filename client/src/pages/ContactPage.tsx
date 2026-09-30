@@ -36,7 +36,9 @@ export const ContactPage: React.FC = () => {
       <section className="border-b border-border bg-cream py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-ivory border border-border text-xs font-semibold text-ink-light">
-            <img src="/abes-logo.png" alt="ABES Engineering College" className="h-5 w-auto object-contain" />
+            <div className="h-5 w-5 rounded bg-ink flex items-center justify-center overflow-hidden shrink-0">
+              <img src="/abes-logo.png" alt="ABES Engineering College" className="h-4 w-auto object-contain object-left" />
+            </div>
             <span>Support & Inquiries Desk</span>
           </div>
 

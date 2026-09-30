@@ -51,12 +51,13 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen = false, onCl
           {/* Header Branding */}
           <div className="p-5 border-b border-border flex items-center justify-between bg-cream">
             <Link to="/admin" className="flex items-center gap-3">
-              <img
-                src="/abes-logo.png"
-                alt="ABES Engineering College"
-                className="h-10 w-auto object-contain"
-              />
-              <div className="h-8 w-px bg-border" />
+              <div className="h-10 w-10 rounded-xl bg-ink flex items-center justify-center overflow-hidden shrink-0">
+                <img
+                  src="/abes-logo.png"
+                  alt="ABES Engineering College"
+                  className="h-9 w-auto object-contain object-left"
+                />
+              </div>
               <div>
                 <div className="font-bold text-sm text-ink tracking-tight leading-tight font-display">
                   Campus<span className="text-green">Connect</span>

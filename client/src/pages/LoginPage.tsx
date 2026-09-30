@@ -37,11 +37,13 @@ export const LoginPage: React.FC = () => {
         {/* Brand Header with ABES Logo */}
         <div className="text-center space-y-2">
           <Link to="/" className="inline-block">
-            <img
-              src="/abes-logo.png"
-              alt="ABES Engineering College"
-              className="h-12 w-auto mx-auto object-contain"
-            />
+            <div className="h-14 w-14 rounded-2xl bg-ink flex items-center justify-center overflow-hidden mx-auto">
+              <img
+                src="/abes-logo.png"
+                alt="ABES Engineering College"
+                className="h-12 w-auto object-contain object-left"
+              />
+            </div>
           </Link>
           <h2 className="font-display text-3xl text-ink tracking-tight">
             Student Portal Sign In

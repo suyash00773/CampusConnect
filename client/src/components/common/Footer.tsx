@@ -8,12 +8,14 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-border-light">
           {/* Brand Info */}
           <div className="space-y-3 md:col-span-1">
-            <Link to="/" className="inline-block">
-              <img
-                src="/abes-logo.png"
-                alt="ABES Engineering College"
-                className="h-11 w-auto object-contain"
-              />
+            <Link to="/" className="inline-flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-ink flex items-center justify-center overflow-hidden shrink-0">
+                <img
+                  src="/abes-logo.png"
+                  alt="ABES Engineering College"
+                  className="h-9 w-auto object-contain object-left"
+                />
+              </div>
             </Link>
             <div className="text-xs font-semibold text-ink uppercase tracking-wider">
               CampusConnect Event Platform

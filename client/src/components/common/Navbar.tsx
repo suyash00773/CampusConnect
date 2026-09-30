@@ -32,18 +32,19 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Brand Logo with ABES Engineering College Shield */}
           <Link to="/" className="flex items-center gap-3 group focus:outline-none">
-            <img
-              src="/abes-logo.png"
-              alt="ABES Engineering College"
-              className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
-            />
-            <div className="h-7 w-px bg-border hidden sm:block" />
+            <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-ink flex items-center justify-center overflow-hidden shrink-0">
+              <img
+                src="/abes-logo.png"
+                alt="ABES Engineering College"
+                className="h-9 sm:h-10 w-auto object-contain object-left"
+              />
+            </div>
             <div className="flex flex-col">
               <span className="text-base font-semibold text-ink flex items-center gap-1.5">
                 CampusConnect
                 <span className="w-1.5 h-1.5 rounded-full bg-green inline-block" />
               </span>
-              <span className="text-[10px] text-ink-light tracking-wide -mt-0.5">
+              <span className="text-[10px] text-ink-light tracking-wide -mt-0.5 hidden sm:block">
                 ABES Event Portal
               </span>
             </div>

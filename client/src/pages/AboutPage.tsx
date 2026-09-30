@@ -9,7 +9,9 @@ export const AboutPage: React.FC = () => {
       <section className="border-b border-border bg-white py-16 shadow-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-pill bg-cream border border-border text-xs font-semibold text-ink-light">
-            <img src="/abes-logo.png" alt="ABES Engineering College" className="h-5 w-auto object-contain" />
+            <div className="h-5 w-5 rounded bg-ink flex items-center justify-center overflow-hidden shrink-0">
+              <img src="/abes-logo.png" alt="ABES Engineering College" className="h-4 w-auto object-contain object-left" />
+            </div>
             <span>ABES Engineering College, Ghaziabad (UP)</span>
           </div>
 

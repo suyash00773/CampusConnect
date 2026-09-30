@@ -87,11 +87,13 @@ export const RegistrationSuccessModal: React.FC<RegistrationSuccessModalProps> =
             {/* Ticket Top Half */}
             <div className="p-5 space-y-4">
               <div className="flex items-center justify-between">
-                <img
-                  src="/abes-logo.png"
-                  alt="ABES Engineering College"
-                  className="h-8 w-auto object-contain"
-                />
+                <div className="h-8 w-8 rounded-lg bg-ink flex items-center justify-center overflow-hidden shrink-0">
+                  <img
+                    src="/abes-logo.png"
+                    alt="ABES Engineering College"
+                    className="h-7 w-auto object-contain object-left"
+                  />
+                </div>
                 <span className="text-[10px] font-semibold text-green bg-green-light border border-border px-2 py-0.5 rounded-pill">
                   Confirmed Pass
                 </span>
